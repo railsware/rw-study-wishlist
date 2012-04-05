@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  birthday: 2012-04-04 14:35:09
+  avatar: 
+  vk_id: MyString
+  privacy_type: MyString
+  is_user: false
+  role: MyString
+
+two:
+  name: MyString
+  birthday: 2012-04-04 14:35:09
+  avatar: 
+  vk_id: MyString
+  privacy_type: MyString
+  is_user: false
+  role: MyString
