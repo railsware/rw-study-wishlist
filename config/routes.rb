@@ -3,6 +3,9 @@ Wishlist::Application.routes.draw do
 
   get "pages/person"
 
+  match '/main',  :to => 'pages#main'
+  match '/person', :to => 'pages#person'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
