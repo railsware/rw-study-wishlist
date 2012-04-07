@@ -13,5 +13,5 @@
 # Ignore all logfiles and tempfiles.
 /log
 /tmp
-/nbproject
-.idea/*
+/nbproject/*
+/.idea/*
