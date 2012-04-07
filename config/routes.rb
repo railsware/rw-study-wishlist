@@ -1,4 +1,8 @@
 Wishlist::Application.routes.draw do
+  get "pages/main"
+
+  get "pages/person"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
