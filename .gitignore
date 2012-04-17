@@ -6,22 +6,12 @@
 
 # Ignore bundler config
 /.bundle
-<<<<<<< HEAD
-=======
 /config/database.yml
->>>>>>> 71f17942ec3377d04192a4686e20f975517a45d6
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
-# Ignore all logfiles and tempfiles.
-<<<<<<< HEAD
-/log/*.log
-=======
-/log
->>>>>>> 71f17942ec3377d04192a4686e20f975517a45d6
 /tmp
-
 *.orig
 *.pid
 *.sqs
@@ -40,6 +30,8 @@ log/*.log
 log
 spec/fixtures/*.yml
 test/**/*
+nbproject/**/*
+nbproject
 tmp/**/*
 tmp/
 .backups
