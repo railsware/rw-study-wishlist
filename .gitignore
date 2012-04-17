@@ -13,3 +13,25 @@
 # Ignore all logfiles and tempfiles.
 /log
 /tmp
+
+*.orig
+*.pid
+*.sqs
+.*.swo
+.*.swp
+.rvmrc
+./start.sh
+.DS_Store
+.idea
+.loadpath
+.project
+.swp
+Thumbs.db
+config/database.yml
+log/*.log
+log
+spec/fixtures/*.yml
+test/**/*
+tmp/**/*
+tmp/
+.backups
