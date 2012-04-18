@@ -6,12 +6,37 @@
 
 # Ignore bundler config
 /.bundle
+/config/database.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
-# Ignore all logfiles and tempfiles.
-/log
 /tmp
+<<<<<<< HEAD
 /nbproject
 /.idea
+=======
+*.orig
+*.pid
+*.sqs
+.*.swo
+.*.swp
+.rvmrc
+./start.sh
+.DS_Store
+.idea
+.loadpath
+.project
+.swp
+Thumbs.db
+config/database.yml
+log/*.log
+log
+spec/fixtures/*.yml
+test/**/*
+nbproject/**/*
+nbproject
+tmp/**/*
+tmp/
+.backups
+>>>>>>> master

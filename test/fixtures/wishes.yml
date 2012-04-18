@@ -3,9 +3,21 @@
 one:
   name: MyString
   url: MyString
+<<<<<<< HEAD
   rating: 1
+=======
+  description: MyText
+  image: 
+  person_id: 1
+>>>>>>> master
 
 two:
   name: MyString
   url: MyString
+<<<<<<< HEAD
   rating: 1
+=======
+  description: MyText
+  image: 
+  person_id: 1
+>>>>>>> master

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person_id: MyString
+  friend_id: MyString
+  show: MyString
+  wishes: false
+
+two:
+  person_id: MyString
+  friend_id: MyString
+  show: MyString
+  wishes: false
