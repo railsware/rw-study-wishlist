@@ -12,7 +12,6 @@
 /db/*.sqlite3
 
 /tmp
-<<<<<<< HEAD
 /nbproject
 /.idea
 =======
@@ -39,4 +38,3 @@ nbproject
 tmp/**/*
 tmp/
 .backups
->>>>>>> master
