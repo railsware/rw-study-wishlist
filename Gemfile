@@ -11,7 +11,7 @@ gem "whenever"
 gem "js-routes", :git => "https://github.com/railsware/js-routes"
 gem "haml-rails"
 gem "will_paginate"
-
+gem 'paperclip', "~> 3.0"
 
 # Gems used only for assets and not required
 # in production environments by default.
