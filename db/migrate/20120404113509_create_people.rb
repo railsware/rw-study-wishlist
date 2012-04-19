@@ -3,9 +3,9 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.string :name
       t.timestamp :birthday
-      t.attachment :avatar
-      t.string :vk_id
-      t.string :privacy_type
+      t.has_attached_file :avatar
+      t.string :vk_id, :email, :privacy_type
+
       t.boolean :is_user
       t.string :role
 

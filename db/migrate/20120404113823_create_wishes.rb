@@ -4,8 +4,8 @@ class CreateWishes < ActiveRecord::Migration
       t.string :name
       t.string :url
       t.text :description
-      t.attachment :image
-      t.integer :person_id
+      t.has_attached_file :image
+      t.integer :owner_id
 
       t.timestamps
     end

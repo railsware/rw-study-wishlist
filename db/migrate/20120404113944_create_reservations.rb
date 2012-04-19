@@ -7,5 +7,6 @@ class CreateReservations < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :reservations, [:person_id, :wish_id]
   end
 end
