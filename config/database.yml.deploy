@@ -14,7 +14,7 @@ test:
   password: root
   host: localhost
 
-production:
+staging:
   adapter: mysql2
   encoding: utf8
   database: wishlist_staging
