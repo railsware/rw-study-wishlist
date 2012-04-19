@@ -6,9 +6,18 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         %script{:src => "http://vkontakte.ru/js/api/openapi.js", :type => "text/javascript"}
-        :javascript
+        #login_button{:onclick => "VK.Auth.login(authInfo);"}
+        %script{:language => "javascript"}
             VK.init({
-                apiId: ВАШ_API_ID
+                apiId: 2877279
             });
+            authInfo = (response) ->
+            if response.session
+                alert "user: " + response.session.mid
+            else
+                alert "not auth"
+            VK.Auth.getLoginStatus(authInfo);
+            VK.UI.button('login_button');
+
     %body
         = yield
