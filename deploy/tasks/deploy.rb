@@ -3,7 +3,6 @@ namespace :deploy do
   task :default do
     top.deploy.update_code
     top.symlinks.all
-    top.bundle.install
     top.deploy.migrate
 
     top.deploy.symlink

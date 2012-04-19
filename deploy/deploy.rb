@@ -2,6 +2,7 @@ set :stages, %w(staging)
 set :stage_dir, "deploy/stages"
 
 require 'rvm/capistrano'
+require "bundler/capistrano"
 require 'capistrano_colors'
 require 'capistrano/ext/multistage'
 
@@ -10,7 +11,8 @@ set :host, 'wishlist.rw.rw'
 set :repository, "git://github.com/railsware/rw-study-wishlist.git"
 set :user, "whishlist"
 set :rvm_ruby_string, '1.9.3'
-#set :rvm_type, :system
+set :rvm_type, :system
+set :bundle_flags,    "--deployment"
 
 role :app, host
 role :web, host
