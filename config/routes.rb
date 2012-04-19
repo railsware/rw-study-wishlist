@@ -1,4 +1,18 @@
 Wishlist::Application.routes.draw do
+  get "friends/index"
+
+  get "wishes/show"
+
+  get "wishes/edit"
+
+  get "wishes/create"
+
+  get "profile/edit"
+
+  get "landing/login"
+
+  get "landing/not_login"
+
   get "pages/main"
 
   get "pages/person"
