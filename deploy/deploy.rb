@@ -32,6 +32,7 @@ set :ssh_options, {
   :keys => [File.dirname(__FILE__) + "/keys/wishlist.pem"] 
   }
 
+default_run_options[:pty] = true 
 
 #after "deploy", "crontab:replace"
 
