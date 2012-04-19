@@ -5,8 +5,5 @@
         = stylesheet_link_tag    "application", :media => "all"
         = javascript_include_tag "application"
         = csrf_meta_tags
-        %script{:src => "http://vkontakte.ru/js/api/openapi.js", :type => "text/javascript"}
-        #login_button{:onclick => "VK.Auth.login(authInfo);"}
-
     %body
         = yield
