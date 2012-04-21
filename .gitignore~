@@ -37,3 +37,5 @@ nbproject
 tmp/**/*
 tmp/
 .backups
+*.lock
+

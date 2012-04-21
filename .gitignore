@@ -37,5 +37,5 @@ nbproject
 tmp/**/*
 tmp/
 .backups
-Gemfile.lock
+*.lock
 
