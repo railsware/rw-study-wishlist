@@ -27,4 +27,10 @@ class Person < ActiveRecord::Base
   has_many :reservation
   
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  validates :email, :presence => true,
+                    :format   => { :with => email_regex }
+  validates :name, :presence => true,
+                   :length => {:maximum => 50}
+  
 end
