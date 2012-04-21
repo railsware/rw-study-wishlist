@@ -1,0 +1,31 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: wishlist_development
+  username: root
+  password: root
+  host: localhost
+  
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: wishlist_test
+  username: root
+  password: root
+  host: localhost
+
+staging:
+  adapter: mysql2
+  encoding: utf8
+  database: wishlist_staging
+  username: root
+  password: root
+  host: localhost
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: wishlist_production
+  username: root
+  password: root
+  host: localhost
