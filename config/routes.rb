@@ -1,25 +1,14 @@
 Wishlist::Application.routes.draw do
+
+  resources :wishes
+
   get "friends/index"
-
-  get "wishes/show"
-
-  get "wishes/edit"
-
-  get "wishes/create"
-
+  
   get "profile/edit"
 
-  get "landing/login"
-
-  get "landing/not_login"
-
-  get "pages/main"
-
-  get "pages/person"
-
-  match '/main',  :to => 'pages#main'
-  match '/person', :to => 'pages#person'
-  root :to => 'pages#main'
+  match '/home',  :to => 'landing#not_login'
+  match '/login', :to => 'landing#login'
+  root :to => 'landing#not_login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
