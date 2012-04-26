@@ -24,15 +24,8 @@ set :use_sudo, true
 set :scm, :git
 set :keep_releases, 5
 
-set :ssh_options, { 
-  :user => 'whishlist',
-  :forward_agent => true, 
-  :auth_methods => %w(publickey), 
-  :port => 22108, 
-  :keys => [File.dirname(__FILE__) + "/keys/wishlist.pem"] 
-  }
-
-default_run_options[:pty] = true 
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
 
 #after "deploy", "crontab:replace"
 
