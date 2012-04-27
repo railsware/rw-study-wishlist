@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 
 gem 'mysql2'
-
+#gem 'pg'
+#gem 'sqlite3'
 
 
 gem 'jquery-rails'
@@ -17,7 +18,10 @@ gem 'json'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do  
+group :assets do
+  gem 'execjs'
+  gem 'therubyracer'
+
   gem 'sass-rails', "~> 3.2.3"
   gem 'coffee-rails', "~> 3.2.1"
   gem 'uglifier', ">= 1.0.3"
@@ -32,7 +36,7 @@ group :test do
 end
 
 group :development do
-  gem "annotate", :require => false
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git', :require => false
   gem "thin", :require => false
 end
 
@@ -46,3 +50,5 @@ group :deploy do
   gem 'capistrano-uptodate'
   gem 'rvm-capistrano'
 end
+
+

@@ -14,6 +14,7 @@
 /tmp
 /nbproject
 /.idea
+=======
 *.orig
 *.pid
 *.sqs

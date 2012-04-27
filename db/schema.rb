@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(:version => 20120404120926) do
 
   add_index "reservations", ["person_id", "wish_id"], :name => "index_reservations_on_person_id_and_wish_id"
 
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "avatar"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "wishes", :force => true do |t|
     t.string   "name"
     t.string   "url"
