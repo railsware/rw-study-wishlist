@@ -1,4 +1,4 @@
-set :branch, ENV['BRANCH'] || "master"
+set :default_branch, "dev"
 set :deploy_to, "/var/www/#{application}/staging/"
 set :rails_env, "staging"
 
