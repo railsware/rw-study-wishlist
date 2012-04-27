@@ -24,6 +24,8 @@ set :use_sudo, true
 set :scm, :git
 set :keep_releases, 5
 
+set(:branch) {Utils::CLI.ask_branch_name(default_branch)}
+
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
