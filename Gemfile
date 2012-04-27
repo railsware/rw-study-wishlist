@@ -2,15 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 
-gem 'mysql2'
+gem 'mysql2', '0.3.11'
 #gem 'pg'
-#gem 'sqlite3'
 
 
 gem 'jquery-rails'
 gem "whenever"
 gem "js-routes", :git => "https://github.com/railsware/js-routes"
-gem "haml-rails"
 gem "will_paginate"
 gem 'paperclip', "~> 3.0"
 gem 'json'

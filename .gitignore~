@@ -14,7 +14,6 @@
 /tmp
 /nbproject
 /.idea
-=======
 *.orig
 *.pid
 *.sqs
@@ -38,3 +37,5 @@ nbproject
 tmp/**/*
 tmp/
 .backups
+*.lock
+
