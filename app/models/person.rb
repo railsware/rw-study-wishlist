@@ -28,4 +28,13 @@ class Person < ActiveRecord::Base
   
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
+  attr_accessible :vk_id, :name, :is_user
+
+  def self.find_for_vkontakte_oauth access_token
+    if person = Person.where(:vk_id => access_token.extra.raw_info.domain).first
+      person
+    else 
+      Person.create!(:is_user => true, :name => access_token.info.name, :vk_id => access_token.extra.raw_info.domain) 
+    end
+  end 
 end

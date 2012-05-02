@@ -12,6 +12,10 @@ gem "js-routes", :git => "https://github.com/railsware/js-routes"
 gem "will_paginate"
 gem 'paperclip', "~> 3.0"
 gem 'json'
+gem 'oauth2'
+gem 'omniauth'
+gem 'omniauth-vkontakte'
+gem 'localtunnel'
 
 
 # Gems used only for assets and not required
