@@ -37,6 +37,7 @@ nbproject/**/*
 nbproject
 tmp/**/*
 tmp/
+/config/database.yml
 .backups
 *~
 
