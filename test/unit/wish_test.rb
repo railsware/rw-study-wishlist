@@ -13,6 +13,7 @@
 #  owner_id           :integer(4)
 #  created_at         :datetime        not null
 #  updated_at         :datetime        not null
+#  rating             :integer(4)
 #
 
 require 'test_helper'

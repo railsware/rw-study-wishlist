@@ -1,0 +1,6 @@
+<p>Чтобы добавить желание введите текст или ссылку в строку поиска</p>
+
+<%= form_for @wish, :url => {:action => "create"} do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "Поиск" %>
+<% end %>

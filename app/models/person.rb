@@ -28,4 +28,9 @@ class Person < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  validates :name, :presence => true, :length => {:in => 2..50}
+  validates :vk_id, :presence => true, :uniqueness => true
+  validates :email, :presence => true, :format =>  {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+  validates :role, :presence => true, :inclusion => { :in => ["admin", "user"] }
+
 end

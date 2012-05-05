@@ -34,7 +34,7 @@ group :test do
 end
 
 group :development do
-  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git', :require => false
+  gem 'annotate', '~> 2.4.1.beta'
   gem "thin", :require => false
 end
 
