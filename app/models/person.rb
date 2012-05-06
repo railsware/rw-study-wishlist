@@ -28,13 +28,36 @@ class Person < ActiveRecord::Base
   
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
-  attr_accessible :vk_id, :name, :is_user
+  attr_accessible :vk_id, :name, :is_user, :birthday, :avatar
 
-  def self.find_for_vkontakte_oauth access_token
-    if person = Person.where(:vk_id => access_token.extra.raw_info.domain).first
+  def self.find_for_vkontakte_oauth access_token, friends_hashes
+    if person = Person.where(:vk_id => access_token.uid, :is_user => true).first
       person
-    else 
-      Person.create!(:is_user => true, :name => access_token.info.name, :vk_id => access_token.extra.raw_info.domain) 
+    else
+	  if Person.where(:vk_id => access_token.uid, :is_user => false).first
+		Person.transaction do
+          i = Person.where(:vk_id => access_token.uid, :is_user => false).first
+  		  i.is_user = true
+  		  i.save
+		end
+		Person.create_friends friends_hashes
+		person = Person.where(:vk_id => access_token.uid).first
+	  else
+    	person = Person.create!(:is_user => true, :name => access_token.info.name,
+					   :birthday => access_token.extra.raw_info.bdate)
+					   #:avatar => access_token.info.image, :vk_id => access_token.uid)
+		Person.create_friends friends_hashes
+		person
+	  end 
     end
   end 
+
+  def self.create_friends friends_hashes
+    friends_hashes.each do |hash|
+	  if Person.where(:vk_id => hash[:uid]).first == nil
+	    Person.create!(:is_user => false, :name =>"#{hash[:first_name]} #{hash[:last_name]}",:birthday => hash[:bdate])
+                       #:avatar => hash[:photo], :vk_id => hash[:uid])	
+	  end	
+    end
+  end
 end

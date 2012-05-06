@@ -16,6 +16,8 @@ gem 'oauth2'
 gem 'omniauth'
 gem 'omniauth-vkontakte'
 gem 'localtunnel'
+gem 'vkontakte_api'
+gem 'vk_api'
 
 
 # Gems used only for assets and not required
