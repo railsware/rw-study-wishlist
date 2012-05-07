@@ -25,10 +25,11 @@ class Person < ActiveRecord::Base
   has_many :friends, :through => :friendships
   has_many :wishes
   has_many :reservation
-  
+
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   
   attr_accessible :vk_id, :name, :is_user, :birthday, :avatar
+
 
   def self.find_for_vkontakte_oauth access_token, friends_hashes
     if person = Person.where(:vk_id => access_token.uid, :is_user => true).first

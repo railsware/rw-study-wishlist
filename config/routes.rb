@@ -2,14 +2,13 @@ Wishlist::Application.routes.draw do
 
   resources :wishes
 
-  get "friends/index"
-  
+
+  get "friends/index" 
   get "profile/edit"
   
-  resources :landing
-  resources :person
   match '/home',  :to => 'landing#not_login'
   match '/auth/vkontakte/callback', :to => 'landing#login'
+
   root :to => 'landing#not_login'
 
   # The priority is based upon order of creation:
