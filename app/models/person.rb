@@ -35,14 +35,11 @@ class Person < ActiveRecord::Base
     if person = Person.where(:vk_id => access_token.uid, :is_user => true).first
       person
     else
-	  if Person.where(:vk_id => access_token.uid, :is_user => false).first
-		Person.transaction do
-          i = Person.where(:vk_id => access_token.uid, :is_user => false).first
-  		  i.is_user = true
-  		  i.save
-		end
+	  if person = Person.where(:vk_id => access_token.uid, :is_user => false).first
+  		person.is_user = true
+  		person.save
 		Person.create_friends friends_hashes
-		person = Person.where(:vk_id => access_token.uid).first
+		person
 	  else
     	person = Person.create!(:is_user => true, :name => access_token.info.name,
 					   :birthday => access_token.extra.raw_info.bdate, :vk_id => access_token.uid)
@@ -56,7 +53,7 @@ class Person < ActiveRecord::Base
   def self.create_friends friends_hashes
     friends_hashes.each do |hash|
 	  if Person.where(:vk_id => hash[:uid]).first == nil
-	    Person.create!(:is_user => false, :name =>"#{hash[:first_name]} #{hash[:last_name]}",:birthday => hash[:bdate], :vk_id => hash[:uid])
+	    Person.create!(:is_user => false, :name => hash[:first_name] + " " + hash[:last_name], :birthday => hash[:bdate], :vk_id => hash[:uid])
                        #:avatar => hash[:photo])	
 	  end	
     end
