@@ -33,7 +33,7 @@ class Person < ActiveRecord::Base
 
   def self.find_for_vkontakte_oauth access_token, friends_hashes
     if person = Person.where(:vk_id => access_token.uid, :is_user => true).first
-      person
+       person
     else
 	  if person = Person.where(:vk_id => access_token.uid, :is_user => false).first
   		person.is_user = true
@@ -41,9 +41,7 @@ class Person < ActiveRecord::Base
 		Person.create_friends friends_hashes
 		person
 	  else
-    	person = Person.create!(:is_user => true, :name => access_token.info.name,
-					   :birthday => access_token.extra.raw_info.bdate, :vk_id => access_token.uid)
-					   #:avatar => access_token.info.image)
+    		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday => access_token.extra.raw_info.bdate, :vk_id => access_token.uid)#:avatar => access_token.info.image)
 		Person.create_friends friends_hashes
 		person
 	  end 
@@ -53,8 +51,7 @@ class Person < ActiveRecord::Base
   def self.create_friends friends_hashes
     friends_hashes.each do |hash|
 	  if Person.where(:vk_id => hash[:uid]).first == nil
-	    Person.create!(:is_user => false, :name => hash[:first_name] + " " + hash[:last_name], :birthday => hash[:bdate], :vk_id => hash[:uid])
-                       #:avatar => hash[:photo])	
+	     Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => hash[:bdate], :vk_id => hash[:uid])#:avatar => hash[:photo])	
 	  end	
     end
   end
