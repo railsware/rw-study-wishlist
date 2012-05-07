@@ -56,7 +56,7 @@ class Person < ActiveRecord::Base
   def self.create_friends friends_hashes
     friends_hashes.each do |hash|
 	  if Person.where(:vk_id => hash[:uid]).first == nil
-	    Person.create!(:is_user => false, :name =>"#{hash[:first_name]} #{hash[:last_name]}",:birthday => hash[:bdate], :vk_id => hash[:uid])
+	    Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name],:birthday => hash[:bdate], :vk_id => hash[:uid])
                        #:avatar => hash[:photo])	
 	  end	
     end
