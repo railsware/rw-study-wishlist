@@ -45,8 +45,8 @@ class Person < ActiveRecord::Base
 		person = Person.where(:vk_id => access_token.uid).first
 	  else
     	person = Person.create!(:is_user => true, :name => access_token.info.name,
-					   :birthday => access_token.extra.raw_info.bdate)
-					   #:avatar => access_token.info.image, :vk_id => access_token.uid)
+					   :birthday => access_token.extra.raw_info.bdate, :vk_id => access_token.uid)
+					   #:avatar => access_token.info.image)
 		Person.create_friends friends_hashes
 		person
 	  end 
@@ -56,8 +56,8 @@ class Person < ActiveRecord::Base
   def self.create_friends friends_hashes
     friends_hashes.each do |hash|
 	  if Person.where(:vk_id => hash[:uid]).first == nil
-	    Person.create!(:is_user => false, :name =>"#{hash[:first_name]} #{hash[:last_name]}",:birthday => hash[:bdate])
-                       #:avatar => hash[:photo], :vk_id => hash[:uid])	
+	    Person.create!(:is_user => false, :name =>"#{hash[:first_name]} #{hash[:last_name]}",:birthday => hash[:bdate], :vk_id => hash[:uid])
+                       #:avatar => hash[:photo])	
 	  end	
     end
   end
