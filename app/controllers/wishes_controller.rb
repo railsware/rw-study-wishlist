@@ -9,8 +9,16 @@ class WishesController < ApplicationController
   end
 
   def new
-    @title = "Search for new wish"
+    @title = "Add new wish"
     @wish = Wish.new
+    result = params[:query]
+    url_patern = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+    if result =~ url_patern
+      @search_url = result
+    else
+      @search_name = result
+    end
+
   end
 
   def edit
@@ -18,6 +26,7 @@ class WishesController < ApplicationController
   end
 
   def create
+
     #Create a new wish
   end
 
@@ -28,6 +37,12 @@ class WishesController < ApplicationController
   def destroy
     #Delete a wish
   end
+
+  def search
+    @title = "Search a wish"
+  end
+
+
 
 
 end

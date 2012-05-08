@@ -10,10 +10,10 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
-
-/tmp
-/nbproject
-/.idea
+*~
+tmp/
+/nbproject/
+/.idea/
 *.orig
 *.pid
 *.sqs
@@ -27,15 +27,8 @@
 .project
 .swp
 Thumbs.db
-config/database.yml
 log/*.log
 log
 spec/fixtures/*.yml
 test/**/*
-nbproject/**/*
-nbproject
-tmp/**/*
-tmp/
 .backups
-*.lock
-

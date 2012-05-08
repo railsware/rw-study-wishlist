@@ -1,6 +1,26 @@
-<p>Чтобы добавить желание введите текст или ссылку в строку поиска</p>
+<div style= "width: 1000px; height: 700px" >
+<div class="wish_image" style="height: 150px; width: 150px; display: block; background-color: red; margin: 0 30px 0 250px; float: left; ">
+</div>
 
-<%= form_for @wish, :url => {:action => "create"} do |f| %>
-    <%= f.text_field :name %>
-    <%= f.submit "Поиск" %>
+<div>
+  <div style="width: 150px; float: left; margin-top: -5px">
+  <p>Имя</p>
+  <p>Ссылка на сайт</p>
+  <p>Описание</p>
+  </div>
+<div style="width: 400px; float: right">
+<%=  form_for @wish, :url => {:action => "create"} do |f| %>
+      <%= f.text_field :name, :value => @search_name.to_s%><br /><br />
+      <%=  f.text_field :url, :value => @search_url.to_s%><br /><br />
+      <%=  f.text_area :description%><br /><br />
+      <%= f.radio_button :rating, :name => "star", :value => 5 %>Хочу на все 5<br /><br />
+      <%= f.radio_button :rating, :name => "star", :value => 4 %>Хочу на 4<br /><br />
+      <%= f.radio_button :rating, :name => "star", :value => 3 %>Хочу на 3<br /><br />
+      <%= f.radio_button :rating, :name => "star", :value => 2 %>Хочу на 2<br /><br />
+      <%= f.radio_button :rating, :name => "star", :value => 1 %>Хочу на 1<br /><br />
+      <%=  f.submit "Сохранить" %>
 <% end %>
+</div>
+</div>
+
+</div>

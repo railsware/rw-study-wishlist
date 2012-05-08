@@ -7,23 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header style="margin-bottom: 50px">
+<div style="margin-bottom: 50px">
 
   <div class = "logo"></div>
   <div class = "profile"></div>
-  <nav>
-    <%= link_to "Добавить желание", new_wish_path %>
+  <div>
+    <%= link_to "Добавить желание", search_path %>
     <%= link_to "Мои желания", wishes_path %>
     <%= link_to "Друзья", '#' %>
     <%= link_to "Резерв", '#' %>
-  </nav>
+    <hr />
+  </div>
 
-</header>
+</div>
 <%= yield %>
 
-<footer style="margin-top: 50px">
-  <div align="left">(C) 2012 Майвиш</div>
-</footer>
+<div style="margin-top: 50px; position: relative" >
+(c) Вишлист 2012
+</div>
 
 </body>
 </html>
