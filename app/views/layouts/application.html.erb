@@ -13,10 +13,13 @@
         <div class="col2of3">
 	        <div class="row">
   		        <div class="col1of3">
-			        <div class="logo"></div>
+			        <div class="logo">
+					     <%= link_to image_tag("logo.png", :border => 0), 'home' %>
+					  </div>
 		        </div>
    	 	        <div class="col2of3">
 			        <nav class="mts nav">
+
     			    <%= link_to "Добавить желание", search_path %>
     			    <%= link_to "Мои желания", wishes_path %>
    			        <%= link_to "Друзья", '#' %>

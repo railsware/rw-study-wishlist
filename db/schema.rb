@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505195957) do
+ActiveRecord::Schema.define(:version => 20120506072540) do
 
   create_table "friendships", :force => true do |t|
     t.string   "person_id"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(:version => 20120505195957) do
 
   add_index "people", ["vk_id"], :name => "index_people_on_vk_id"
 
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.decimal  "price",       :precision => 8, :scale => 2
+    t.text     "description"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "reservations", :force => true do |t|
     t.integer  "wish_id"
     t.integer  "person_id"
@@ -66,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20120505195957) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "owner_id"
+    t.integer  "person_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "rating"
