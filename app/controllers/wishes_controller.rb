@@ -1,8 +1,33 @@
+# == Schema Information
+#
+# Table name: people
+#
+#  id                  :integer(4)      not null, primary key
+#  name                :string(255)
+#  birthday            :datetime
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer(4)
+#  avatar_updated_at   :datetime
+#  vk_id               :string(255)
+#  email               :string(255)
+#  privacy_type        :string(255)
+#  is_user             :boolean(1)
+#  role                :string(255)
+#  created_at          :datetime        not null
+#  updated_at          :datetime        not null
+#
 class WishesController < ApplicationController
 
   def index
     @title = "All your wishes"
-    current_user = Person.find(1)
+
+    if  Person.all.size == 0
+      current_user = Person.create(:name => "Zhenia", :vk_id => "id13829579", :email => "freeman1992@list.ru", :is_user => true, :role => "admin")
+    else
+      current_user = Person.find(1)
+    end
+
     @wishes = Wish.where(:owner_id => current_user.id)
   end
 
