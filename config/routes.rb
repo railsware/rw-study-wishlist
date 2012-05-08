@@ -1,13 +1,17 @@
 Wishlist::Application.routes.draw do
 
   resources :wishes
-
+  resources :friends
 
   get "friends/index" 
   get "profile/edit"
   
   match '/home',  :to => 'landing#not_login'
   match '/auth/vkontakte/callback', :to => 'landing#login'
+  match '/friends_whose_birthday_is_in_one_week', :to => 'friends#bdate_in_1_week'
+  match '/friends_whose_birthday_is_in_two_weeks', :to => 'friends#bdate_in_2_weeks'
+  match '/friends_whose_birthday_is_in_one_month', :to => 'friends#bdate_in_1_month'
+  match '/friends_whose_birthday_is_unknown', :to => 'friends#bdate_unknown'
 
   root :to => 'landing#not_login'
 

@@ -38,20 +38,21 @@ class Person < ActiveRecord::Base
 	  if person = Person.where(:vk_id => access_token.uid, :is_user => false).first
   		person.is_user = true
   		person.save
-		Person.create_friends friends_hashes
+		Person.create_friends friends_hashes, person
 		person
 	  else
     		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday => access_token.extra.raw_info.bdate, :vk_id => access_token.uid)#:avatar => access_token.info.image)
-		Person.create_friends friends_hashes
+		Person.create_friends friends_hashes, person
 		person
 	  end 
     end
   end 
 
-  def self.create_friends friends_hashes
+  def self.create_friends friends_hashes, person
     friends_hashes.each do |hash|
 	  if Person.where(:vk_id => hash[:uid]).first == nil
-	     Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => hash[:bdate], :vk_id => hash[:uid])#:avatar => hash[:photo])	
+	     friend = Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => hash[:bdate], :vk_id => hash[:uid])#:avatar => hash[:photo])	
+	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )	     
 	  end	
     end
   end
