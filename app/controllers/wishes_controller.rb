@@ -47,7 +47,9 @@ class WishesController < ApplicationController
   end
 
   def edit
-    #Show an edit wish form
+    @title = "Edit wish page"
+    @wish = Wish.find(params[:id])
+    @current_user = Person.find_by_name("Zhenia")
   end
 
   def create
@@ -62,7 +64,12 @@ class WishesController < ApplicationController
   end
 
   def update
-    #Update a wish
+    @wish = Wish.find(params[:id])
+    if @wish.update_attributes(params[:wish])
+      redirect_to wishes_path
+    else
+      redirect_to edit_wish_path(@wish)
+    end
   end
 
   def destroy
