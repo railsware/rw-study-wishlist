@@ -13,11 +13,9 @@
       <%= f.text_field :name, :value => @search_name.to_s%><br /><br />
       <%=  f.text_field :url, :value => @search_url.to_s%><br /><br />
       <%=  f.text_area :description%><br /><br />
-      <%= f.radio_button :rating, :name => "star", :value => 5 %>Хочу на все 5<br /><br />
-      <%= f.radio_button :rating, :name => "star", :value => 4 %>Хочу на 4<br /><br />
-      <%= f.radio_button :rating, :name => "star", :value => 3 %>Хочу на 3<br /><br />
-      <%= f.radio_button :rating, :name => "star", :value => 2 %>Хочу на 2<br /><br />
-      <%= f.radio_button :rating, :name => "star", :value => 1 %>Хочу на 1<br /><br />
+      <p>Хочу на ... (0-5)</p>
+      <%= f.text_field :rating %><br /><br />
+      <%= f.hidden_field :owner_id, :value => 1 %>
       <%=  f.submit "Сохранить" %>
 <% end %>
 </div>

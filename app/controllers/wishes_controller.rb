@@ -1,7 +1,9 @@
 class WishesController < ApplicationController
 
   def index
-    #List all wishes
+    @title = "All your wishes"
+    current_user = Person.find(1)
+    @wishes = Wish.where(:owner_id => current_user.id)
   end
 
   def show
@@ -26,6 +28,12 @@ class WishesController < ApplicationController
   end
 
   def create
+    @wish = Wish.new(params[:wish])
+    if @wish.save
+      redirect_to wishes_path
+    else
+      render new_wish_path
+    end
 
     #Create a new wish
   end
@@ -35,7 +43,7 @@ class WishesController < ApplicationController
   end
 
   def destroy
-    #Delete a wish
+
   end
 
   def search
