@@ -79,10 +79,6 @@ class WishesController < ApplicationController
   end
 
   def search
-    if  Person.all.size == 0
-      current_user = Person.create(:name => "Zhenia", :vk_id => "id13829579", :email => "freeman1992@list.ru", :is_user => true, :role => "admin")
-    end
-
     @title = "Search a wish"
   end
 
