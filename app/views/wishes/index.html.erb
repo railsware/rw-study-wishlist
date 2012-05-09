@@ -1,1 +1,9 @@
-<h1>List of all wishes</h1>
+<h1>List of your wishes</h1>
+<%  if (@wishes.size != 0)  %>
+<%@wishes.each do |w| %>
+    <p><%= link_to w.name, edit_wish_path(w)  %>, URL:  <%= w.url %></p>
+<% end %>
+
+<% else %>
+    <p>Your list is empty</p>
+<% end %>

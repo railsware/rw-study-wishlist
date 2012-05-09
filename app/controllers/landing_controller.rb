@@ -17,7 +17,6 @@ class LandingController < ApplicationController
   end
 
  
-
   def not_login
     @title = "Login Page"
     @_current_user = session[:current_user_id] = nil

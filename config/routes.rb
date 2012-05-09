@@ -12,7 +12,8 @@ Wishlist::Application.routes.draw do
   match '/friends_whose_birthday_is_in_two_weeks', :to => 'friends#bdate_in_2_weeks'
   match '/friends_whose_birthday_is_in_one_month', :to => 'friends#bdate_in_1_month'
   match '/friends_whose_birthday_is_unknown', :to => 'friends#bdate_unknown'
-
+  match '/search', :to => 'wishes#search', :as => 'search'
+  match 'new', :to => 'wishes#new'
   root :to => 'landing#not_login'
 
   # The priority is based upon order of creation:

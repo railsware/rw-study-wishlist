@@ -20,7 +20,7 @@
 
 class Person < ActiveRecord::Base
   set_table_name "people"
-
+  attr_accessible :name, :birthday, :vk_id, :email, :is_user, :role
   has_many :friendships
   has_many :friends, :through => :friendships
   has_many :wishes
