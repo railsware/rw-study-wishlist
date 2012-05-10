@@ -16,17 +16,24 @@
 			        <div class="logo"></div>
 		        </div>
    	 	        <div class="col2of3">
-			        <nav class="mts nav">
-    			    <%= link_to "Добавить желание", search_path %>
-    			    <%= link_to "Мои желания", wishes_path %>
-   			        <%= link_to "Друзья", '#' %>
-    			    <%= link_to "Резерв", '#' %>
+			        <nav class="mtm h2 mll">
+    			    <%= link_to "Добавить желание", search_path,:class=>"link" %>
+    			    <%= link_to "Мои желания", wishes_path,:class=>"link" %>
+   			        <%= link_to "Друзья", '#',:class=>"link" %>
+    			    <%= link_to "Резерв", '#',:class=>"link" %>
 			        </nav>
   		        </div>
 	        </div>
         </div>
-        <div class="profile col1of3">AVATAR</div>
+        <div class="profile col1of3">
+          <div class="avatar" align="right">
+            <div class="photo mts" align="center"></div>
+            <div class="name h2 mtm pls" align="right">Анна Ротар</div>
+            <div class="exit mtm mls" align="right"></div>
+           </div>
+        </div>
 	</div>
+  <div class="polosa"></div>
 </header>
 <%= yield %>
 <footer>
