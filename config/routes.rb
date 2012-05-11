@@ -2,6 +2,7 @@ Wishlist::Application.routes.draw do
 
   resources :wishes
 
+
   match 'home',  :to => 'landing#not_login'
   match 'login', :to => 'landing#login'
   match '/search', :to => 'wishes#search', :as => 'search'
