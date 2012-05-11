@@ -42,13 +42,7 @@
 
 
 
-<%if current_user%>
-    <p><%= current_user.name %></p>
-    <p><%= link_to "Logout", :controller => "landing", :action => "not_login" %></p>
 
-<%else%>
-    <p><%= link_to 'Login', 'auth/vkontakte' %></p>
-<%end%>
 
 
 <%= yield %>
