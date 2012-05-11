@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<header class="mbl">
+  <%if current_user%>
+      <p><%= current_user.name %></p>
+      <p><%= link_to "Logout", :controller => "landing", :action => "not_login" %></p>
+
+      <header class="mbl">
 	<div class="row">
         <div class="col2of3">
 	        <div class="row">
@@ -21,7 +25,7 @@
 			        <nav class="mtm h2 mll">
     			    <%= link_to "Добавить желание", search_path,:class=>"link" %>
     			    <%= link_to "Мои желания", wishes_path,:class=>"link" %>
-   			    	<%= link_to "Друзья", '#',:class=>"link" %>
+   			    	<%= link_to "Друзья", friends_path,:class=>"link" %>
     			    <%= link_to "Резерв", '#',:class=>"link" %>
 			        </nav>
   		        </div>
@@ -39,6 +43,11 @@
 	</div>
   <div class="polosa"></div>
 </header>
+
+<%else%>
+<p><%= link_to 'Login', 'auth/vkontakte' %></p>
+<%end%>
+
 <%= yield %>
 <footer>
   <div align="left">(C) 2012 Майвиш</div>

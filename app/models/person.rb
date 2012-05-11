@@ -27,10 +27,33 @@ class Person < ActiveRecord::Base
   has_many :reservation
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  
+  attr_accessible :vk_id, :name, :is_user, :birthday, :avatar
 
-  validates :name, :presence => true, :length => {:in => 2..50}
-  validates :vk_id, :presence => true, :uniqueness => true
-  validates :email, :presence => true, :format =>  {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
-  validates :role, :presence => true, :inclusion => { :in => ["admin", "user"] }
 
+  def self.find_for_vkontakte_oauth access_token, friends_hashes
+    if person = Person.where(:vk_id => access_token.uid, :is_user => true).first
+       person
+    else
+	  if person = Person.where(:vk_id => access_token.uid, :is_user => false).first
+  		person.is_user = true
+  		person.save
+		Person.create_friends friends_hashes, person
+		person
+	  else
+    		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday => access_token.extra.raw_info.bdate, :vk_id => access_token.uid)#:avatar => access_token.info.image)
+		Person.create_friends friends_hashes, person
+		person
+	  end 
+    end
+  end 
+
+  def self.create_friends friends_hashes, person
+    friends_hashes.each do |hash|
+	  if Person.where(:vk_id => hash[:uid]).first == nil
+	     friend = Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => hash[:bdate], :vk_id => hash[:uid])#:avatar => hash[:photo])	
+	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )	     
+	  end	
+    end
+  end
 end

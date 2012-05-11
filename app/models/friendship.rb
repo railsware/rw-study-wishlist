@@ -12,4 +12,6 @@
 class Friendship < ActiveRecord::Base
   belongs_to :person
   belongs_to :friend, :class_name => "Person"
+  
+  attr_accessible :person_id, :friend_id
 end
