@@ -15,7 +15,7 @@
           <%=  f.text_area :description, :value => @wish.description%><br /><br />
           <p>Хочу на ... (0-5)</p>
           <%= f.text_field :rating, :value => @wish.rating %><br /><br />
-          <%= f.hidden_field :owner_id, :value => @current_user.id %>
+          <%= f.hidden_field :owner_id, :value => current_user.id %>
           <br /><br />
           <%= link_to "Удалить", wish_path(@wish), :method => :delete%><br /><br />
           <%=  f.submit "Сохранить" %>

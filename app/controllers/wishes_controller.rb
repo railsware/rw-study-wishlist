@@ -22,7 +22,6 @@ class WishesController < ApplicationController
   def index
     @title = "All your wishes"
 
-    current_user = Person.find_by_name("Zhenia")
 
 
     @wishes = Wish.where(:owner_id => current_user.id)
@@ -35,7 +34,6 @@ class WishesController < ApplicationController
   def new
     @title = "Add new wish"
     @wish = Wish.new
-    @current_user = Person.find_by_name("Zhenia")
     result = params[:query]
     url_patern = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
     if result =~ url_patern
@@ -49,7 +47,6 @@ class WishesController < ApplicationController
   def edit
     @title = "Edit wish page"
     @wish = Wish.find(params[:id])
-    @current_user = Person.find_by_name("Zhenia")
   end
 
   def create
