@@ -19,6 +19,8 @@ gem 'localtunnel'
 gem 'vkontakte_api'
 gem 'vk_api'
 
+gem 'exception_notification'
+
 
 # Gems used only for assets and not required
 # in production environments by default.

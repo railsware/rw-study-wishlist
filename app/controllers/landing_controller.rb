@@ -7,7 +7,6 @@ class LandingController < ApplicationController
 	@person = Person.find_for_vkontakte_oauth auth_hash, friends_hashes
 
     if @person.persisted?
-	  #@friends = Person.create_friends @app.friends.get(fields: 'uid, first_name, last_name, bdate, photo')
       session[:current_user_id] = @person.id
       flash[:notice] = "authentication success"
     else

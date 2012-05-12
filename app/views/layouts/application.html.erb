@@ -15,33 +15,53 @@
 <p><%= link_to 'Login', 'auth/vkontakte' %></p>
 <%end%>
 
+
 <header class="mbl">
 	<div class="row">
-        <div class="col2of3">
+        <div class="col4of5">
 	        <div class="row">
   		        <div class="col1of3">
-			        <div class="logo"></div>
+			        <div class="logo">
+                 <%= link_to image_tag("logo.png", :border => 0), home_path %>
+                 </div>
 		        </div>
    	 	        <div class="col2of3">
-			        <nav class="mts nav">
-    			    <%= link_to "Добавить желание", search_path %>
-    				<%= link_to "Мои желания", wishes_path %>
-    				<%= link_to "Друзья", friends_path %>
-    				<%= link_to "Резерв", '#' %>
+			        <nav class="mtm h2 msl">
+    			    <%= link_to "Добавить желание", search_path,:class=>"link" %>
+    			    <%= link_to "Мои желания", wishes_path,:class=>"link" %>
+   			    	<%= link_to "Друзья", friends_path,:class=>"link" %>
+    			    <%= link_to "Резерв", '#',:class=>"link" %>
 			        </nav>
   		        </div>
 	        </div>
         </div>
-        <div class="profile col1of3">AVATAR</div>
+        <div class="profile col1of5">
+          <div class="avatar" align="right">
+            <div class="photo mts" align="center"></div>
+            <div class="name h2 mtm pls" align="right">Анна Ротар</div>
+            <div class="exit mtm mls" align="right">
+           <%= link_to image_tag("exit.png", :border => 0), home_path %>
+           </div>
+           </div>
+        </div>
 	</div>
+  <div class="polosa"></div>
 </header>
-
-
-
 <%= yield %>
-
 <footer>
-  <div align="left">(C) 2012 Майвиш</div>
+  <div class="polosaF"></div>
+  <div class="row">
+    <div class="col1of2">
+        <div align="left">(C) 2012 Майвиш</div>
+    </div>
+    <div class="col1of2">
+      <div class="contacts">
+        <div class="adminmywish mrs"></div>
+        <div class="vkontakte mrs"></div>
+        <div class="twitter"></div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 </body>
