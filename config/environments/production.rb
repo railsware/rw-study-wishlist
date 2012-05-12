@@ -20,6 +20,17 @@ Wishlist::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :user_name => "wishlist-staging",
+    :password => "dc2e697ad1984213",
+    :address => "mailtrap.io",
+    :port => 2525,
+    :authentication => :plain,
+  }
+
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
