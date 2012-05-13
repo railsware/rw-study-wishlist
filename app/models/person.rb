@@ -26,7 +26,7 @@ class Person < ActiveRecord::Base
   has_many :wishes
   has_many :reservation
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :avatar
   
   attr_accessible :vk_id, :name, :is_user, :birthday, :avatar
 
@@ -41,7 +41,8 @@ class Person < ActiveRecord::Base
 		Person.create_friends friends_hashes, person
 		person
 	  else
-    		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday => access_token.extra.raw_info.bdate, :vk_id => access_token.uid)#:avatar => access_token.info.image)
+    		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday =>
+    		if access_token.extra.raw_info.bdate == nil then nil else  DateTime.strptime(access_token.extra.raw_info.bdate, '%d.%m') end, :vk_id => access_token.uid)#, :avatar => access_token.extra.raw_info.photo)
 		Person.create_friends friends_hashes, person
 		person
 	  end 
@@ -51,7 +52,7 @@ class Person < ActiveRecord::Base
   def self.create_friends friends_hashes, person
     friends_hashes.each do |hash|
 	  if Person.where(:vk_id => hash[:uid]).first == nil
-	     friend = Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => hash[:bdate], :vk_id => hash[:uid])#:avatar => hash[:photo])	
+	     friend = Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => if hash[:bdate] == nil then nil else  DateTime.strptime(hash[:bdate], '%d.%m') end, :vk_id => hash[:uid])#, :avatar => hash[:photo])	
 	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )	     
 	  end	
     end
