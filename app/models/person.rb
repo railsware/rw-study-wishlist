@@ -44,10 +44,10 @@ class Person < ActiveRecord::Base
     		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday =>
     								if access_token.extra.raw_info.bdate == nil
     								  nil
-    								else  
-    								  DateTime.strptime(access_token.extra.raw_info.bdate, '%d.%m')
+    								else
+	     						      DateTime.strptime(access_token.extra.raw_info.bdate, '%d.%m')
     								end,
-    								:vk_id => access_token.uid)#, :avatar => access_token.extra.raw_info.photo)
+    								:vk_id => access_token.uid, :avatar => access_token.extra.raw_info.photo)
 		Person.create_friends friends_hashes, person
 		person
 	  end 
@@ -61,8 +61,9 @@ class Person < ActiveRecord::Base
 	     						 if hash[:bdate] == nil
 	     						   nil 
 	     						 else
-	     						   DateTime.strptime(hash[:bdate], '%d.%m') 
-	     						 end, :vk_id => hash[:uid])#, :avatar => hash[:photo])	
+	     						   DateTime.strptime(hash[:bdate], '%d.%m')    
+	     						 end,
+	     						 :vk_id => hash[:uid], :avatar => hash[:photo])	
 	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )	     
 	  end	
     end
