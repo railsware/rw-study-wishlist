@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="wrapper">
 <header class="mbl">
 	<div class="row">
         <div class="col4of5">
@@ -35,8 +35,9 @@
 	</div>
   <div class="polosa"></div>
 </header>
-
 <%= yield %>
+<div class="pusher"></div>
+</div>
 <footer>
   <div class="polosaF"></div>
   <div class="row">
