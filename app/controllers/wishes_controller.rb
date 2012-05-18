@@ -57,7 +57,7 @@ class WishesController < ApplicationController
     if @wish.save
       redirect_to wishes_path
     else
-      render new_wish_path
+      redirect_to new_wish_path # Временно
     end
 
     #Create a new wish
