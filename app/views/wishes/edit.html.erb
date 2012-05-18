@@ -19,6 +19,7 @@
           <br /><br />
           <%=  f.submit "Сохранить", :border => 0 %>
 		  <%=  f.submit "Отмена", :border => 0  %>
+			<%=  link_to "Удалить", wish_path(@wish), :method => :delete %>
       <% end %>
     </div>
   </div>
