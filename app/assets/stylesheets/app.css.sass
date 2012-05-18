@@ -1,50 +1,68 @@
+html
+  height: 100%
+
 body
   width: 960px
   height: 100%
+  font: 13px arial, sans-serif
   margin: 0 auto
+
 
 footer
   color: black
   font: 13px verdana
+  height: 65px
+
+.wrapper
+  min-height: 100%
+  height: auto !important
+  height: 100%
+  margin: 0 auto -65px
+
+.pusher
+  height: 65px
 
 .h1
-  color: black
-  font : 24px bold arial
+  color: #000
+  font: 24px arial
 
 .h2
   color: #1d6edb
-  font: 18px bold arial sans-serif
+  font: bold 18px arial
 
 .logo
   width: 152px
   height: 50px
-  background: url(asset_path("logo.png", image))
-	
-nav 	
-  font: 18px arial
 
+nav 	
+  margin: 20px 0 0 -30px
+
+.link
+  margin-right: 10px
 .link:hover
   color: black
   text-decoration: none
 
-
 .photo
   width: 36px
   height: 36px
+  margin-top: 10px
   background: url(asset_path("avatar.png", image))
   float: left
 
 .avatar
   float: right
 
-.name
+.avatar .name
   float: left
+  margin-top: 20px
+  padding-left: 10px
 
 .exit
   width: 21px
   height: 21px
-  background: url(asset_path("exit.png", image))
   float: left
+  margin: 20px 0 0 10px
 
 .polosa
   width: 960px
@@ -56,26 +74,19 @@ nav
   height: 13px
   background: url(asset_path("polosaF.png", image))
 
-.adminmywish
+.contacts
+  float: right
+
+.contacts .adminmywish
   width: 167px
   height: 33px
   background: url(asset_path("adminmywish.png", image))
   float: left
+  margin-right: 10px
 
-.vkontakte
-  width: 95px
-  height: 33px
-  background: url(asset_path("vkontakte.png", image))
+.contacts .vkontakte
   float: left
-
-.twitter
-  width: 70px
-  height: 33px
-  background: url(asset_path("twitter.png", image))
-  float: left
-
-.contacts
-  float: right
+  margin-right: 10px
 
 
 
