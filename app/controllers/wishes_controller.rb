@@ -21,12 +21,13 @@ class WishesController < ApplicationController
   before_filter :set_current_user
 
   protected
-
   def set_current_user
     if (current_user == nil)
-      redirect_to root_path
+      render 'landing/not_login'
     end
   end
+
+  public
 
   def index
     @title = "All your wishes"
@@ -44,8 +45,10 @@ class WishesController < ApplicationController
     url_patern = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
     if result =~ url_patern
       @search_url = result
+      @search_name = ""
     else
       @search_name = result
+      @search_url = ""
     end
 
   end

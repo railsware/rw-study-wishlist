@@ -4,8 +4,8 @@
 
   <div>
     <div style="width: 150px; float: left; margin-top: -5px">
-      <p>Имя</p>
-      <p>Ссылка на сайт</p>
+      <p>Имя</p><br />
+      <p>Ссылка на сайт</p>><br />
       <p>Описание</p>
     </div>
     <div style="width: 400px; float: right">
@@ -18,7 +18,6 @@
           <%= f.hidden_field :owner_id, :value => current_user.id %>
           <br /><br />
           <%=  f.submit "Сохранить", :border => 0 %>
-		  <%=  f.submit "Отмена", :border => 0  %>
 			<%=  link_to "Удалить", wish_path(@wish), :method => :delete %>
       <% end %>
     </div>
