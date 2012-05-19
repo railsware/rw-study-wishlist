@@ -27,6 +27,7 @@ class WishesController < ApplicationController
     end
   end
 
+
   public
 
   def index
@@ -87,7 +88,6 @@ class WishesController < ApplicationController
   def search
     @title = "Search a wish"
   end
-
 
 
 end
