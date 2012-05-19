@@ -18,12 +18,18 @@
 #  updated_at          :datetime        not null
 #
 class WishesController < ApplicationController
+  before_filter :set_current_user
+
+  protected
+
+  def set_current_user
+    if (current_user == nil)
+      redirect_to root_path
+    end
+  end
 
   def index
     @title = "All your wishes"
-
-
-
     @wishes = Wish.where(:owner_id => current_user.id)
   end
 
@@ -78,7 +84,6 @@ class WishesController < ApplicationController
   def search
     @title = "Search a wish"
   end
-
 
 
 

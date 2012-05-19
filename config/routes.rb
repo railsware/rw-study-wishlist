@@ -5,8 +5,7 @@ Wishlist::Application.routes.draw do
 
   get "friends/index" 
   get "profile/edit"
-  
-  match '/home',  :to => 'landing#not_login'
+
   match '/auth/vkontakte/callback', :to => 'landing#login'
   match '/friends_whose_birthday_is_in_one_week', :to => 'friends#bdate_in_1_week'
   match '/friends_whose_birthday_is_in_two_weeks', :to => 'friends#bdate_in_2_weeks'
@@ -14,7 +13,7 @@ Wishlist::Application.routes.draw do
   match '/friends_whose_birthday_is_unknown', :to => 'friends#bdate_unknown'
   match '/search', :to => 'wishes#search', :as => 'search'
   match 'new', :to => 'wishes#new'
-  root :to => 'landing#not_login'
+  root :to => 'landing#home_page'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

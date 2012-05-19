@@ -9,6 +9,8 @@
   <p>Описание</p>
   </div>
 <div style="width: 400px; float: right">
+
+
 <%=  form_for @wish, :url => {:action => "create"} do |f| %>
       <%= f.text_field :name, :value => @search_name.to_s%><br /><br />
       <%=  f.text_field :url, :value => @search_url.to_s%><br /><br />
@@ -17,7 +19,7 @@
       <%= f.text_field :rating %><br /><br />
       <%= f.hidden_field :owner_id, :value => current_user.id %>
       <%=  f.submit "Сохранить" %>
-			<%= link_to "Отмена", search_path %>
+
 <% end %>
 </div>
 </div>

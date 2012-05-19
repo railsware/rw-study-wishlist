@@ -1,5 +1,14 @@
 class FriendsController < ApplicationController
-    
+  before_filter :set_current_user
+
+  protected
+
+  def set_current_user
+    if (current_user == nil)
+      redirect_to root_path
+    end
+  end
+
   def index
     val = current_user.friendships
     @friends = val.collect { |v| v.friend }
