@@ -5,7 +5,7 @@ class FriendsController < ApplicationController
 
   def set_current_user
     if (current_user == nil)
-      redirect_to root_path
+      render 'landing/not_login'
     end
   end
 
