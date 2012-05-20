@@ -33,4 +33,7 @@ class FriendsController < ApplicationController
     @friends_unknown.delete(nil)
   end
   
+  def show
+    #Show a single wish
+  end
 end
