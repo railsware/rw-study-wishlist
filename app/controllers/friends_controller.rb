@@ -34,6 +34,6 @@ class FriendsController < ApplicationController
   end
   
   def show
-    #Show a single wish
+    @friend = Person.find(params[:id])
   end
 end
