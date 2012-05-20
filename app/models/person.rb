@@ -45,7 +45,11 @@ class Person < ActiveRecord::Base
     								if access_token.extra.raw_info.bdate == nil
     								  nil
     								else
-	     						      DateTime.strptime(access_token.extra.raw_info.bdate, '%d.%m')
+	     						      if access_token.extra.raw_info.bdate.length > 5
+	     						        DateTime.strptime(access_token.extra.raw_info.bdate, '%d.%m.%Y')
+	     						      else
+	     						        DateTime.strptime(access_token.extra.raw_info.bdate, '%d.%m')
+	     						      end
     								end,
     								:vk_id => access_token.uid)#, :avatar => access_token.extra.raw_info.photo)
 		Person.create_friends friends_hashes, person
@@ -61,7 +65,11 @@ class Person < ActiveRecord::Base
 	     						 if hash[:bdate] == nil
 	     						   nil 
 	     						 else
-	     						   DateTime.strptime(hash[:bdate], '%d.%m')    
+	     						   if hash[:bdate].length > 5
+	     						     DateTime.strptime(hash[:bdate], '%d.%m.%Y')
+	     						   else
+	     						     DateTime.strptime(hash[:bdate], '%d.%m')
+	     						   end 
 	     						 end,
 	     						 :vk_id => hash[:uid])#, :avatar => hash[:photo])	
 	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )	     
