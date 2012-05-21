@@ -21,9 +21,13 @@ class LandingController < ApplicationController
       @title = "Welcome, dear #{current_user.name}";
     else
       @title = "Welcome, dear guest"
-      @_current_user = session[:current_user_id] = nil
     end
 
+  end
+
+  def logout
+    @_current_user = session[:current_user_id] = nil
+    render root_path
   end
 
 end
