@@ -1,4 +1,4 @@
-set :stages, %w(staging)
+set :stages, %w(production)
 set :stage_dir, "deploy/stages"
 
 require 'rvm/capistrano'
