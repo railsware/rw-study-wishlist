@@ -20,6 +20,7 @@ class Wish < ActiveRecord::Base
   attr_accessible :name, :url, :description, :rating, :owner_id
   belongs_to :owner, :class_name => 'Person'
   has_one :reservation
+	default_scope :order => 'rating DESC'
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   validates :name, :presence => true, :length => {:in => 2..50}
@@ -27,5 +28,5 @@ class Wish < ActiveRecord::Base
   validates :owner_id, :presence =>  true
   validates :rating, :presence => true, :inclusion => {:in => 1..5}
 
-  
+
 end
