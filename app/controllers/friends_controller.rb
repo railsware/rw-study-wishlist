@@ -33,7 +33,7 @@ class FriendsController < ApplicationController
   def bdate_in_1_month
     d_now = DateTime.now
     friends = index
-    @friends_1_month = friends.collect { |v| if v.birthday != nil then if (v.birthday.to_date - d_now.to_date <= 30)&&(v.birthday.to_date - d_now.to_date >= 0) then v end end }
+    @friends_1_month = friends.collect { |v| if v.birthday != nil then if ((v.birthday.month == d_now.month)&&(v.birthday.day - d_now.day >= 0))||((v.birthday.month == d_now.month + 1)&&(d_now.day - v.birthday.day >= 0)) then v end end }
     @friends_1_month.delete(nil)
   end
   
@@ -44,4 +44,7 @@ class FriendsController < ApplicationController
     @friends_unknown.delete(nil)
   end
   
+  def show
+    @friend = Person.find(params[:id])
+  end
 end

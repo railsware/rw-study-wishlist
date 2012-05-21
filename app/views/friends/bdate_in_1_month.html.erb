@@ -4,5 +4,15 @@
 <p><%= link_to '2 weeks', :controller => 'friends', :action => 'bdate_in_2_weeks' %></p>
 <p><%= link_to '1 month', :controller => 'friends', :action => 'bdate_in_1_month' %></p>
 <p><%= link_to 'unknown', :controller => 'friends', :action => 'bdate_unknown' %></p>
-<p><%= @friends_1_month %></p>
+
+</br>
+
+<% if (@friends_1_month.size != 0)  %>
+<% @friends_1_month.each do |f| %>
+    <p><%= link_to f.name, friend_path(f)  %></p>
+<% end %>
+<% else %>
+    <p>Your friendlist is empty</p>
+<% end %>
+
 <p>Count: <%= @friends_1_month.count %></p>
