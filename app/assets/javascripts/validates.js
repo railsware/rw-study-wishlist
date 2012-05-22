@@ -17,11 +17,21 @@ $(document).ready(function () {
     var errorRating = "?";
     var urlRegExp = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
 
-
+    if ($("input#submit").attr('isEdit') == "true" )
+    {
+       errorName = "";
+       errorUrl = "";
+       errorRating = "";
+    }
+    else
+    {
+       $("input#submit").attr('disabled', true);
+    }
 
 
     $("input#wish_name").blur(function()
     {
+
         errorName = "";
        if ($(this).val().length == 0)
        {
@@ -94,6 +104,20 @@ $(document).ready(function () {
 
 
         $("span#error_url").text(errorUrl);
+
+
+    });
+
+    $("input#wish_name, input#wish_url, input#wish_rating").blur(function()
+    {
+       if ( (errorName == "") && (errorRating == "") && (errorUrl == ""))
+       {
+         $("input#submit").attr('disabled', false);
+       }
+       else
+       {
+         $("input#submit").attr('disabled', true);
+       }
 
 
     });

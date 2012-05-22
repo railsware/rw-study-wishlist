@@ -18,7 +18,7 @@
           <%= f.text_field :rating, :value => @wish.rating %><span id="error_rating"></span><br /><br />
           <%= f.hidden_field :owner_id, :value => current_user.id %>
           <br /><br />
-          <%=  f.submit "Сохранить", :border => 0 %>
+          <%=  f.submit "Сохранить", :border => 0, :id => "submit", :isEdit => true %>
 			<%=  link_to "Удалить", wish_path(@wish), :method => :delete %>
       <% end %>
     </div>
