@@ -10,23 +10,22 @@
 
 <%if current_user%> 
 <p><%= current_user.name %></p>
-<p><%= link_to "Logout", :controller => "landing", :action => "not_login" %></p> 
+<p><%= link_to "Logout", :controller => "landing", :action => "logout" %></p>
 <%else%>
 <p><%= link_to 'Login', 'auth/vkontakte' %></p>
 <%end%>
 
 
+<div class="wrapper">
 <header class="mbl">
 	<div class="row">
         <div class="col4of5">
 	        <div class="row">
   		        <div class="col1of3">
-			        <div class="logo">
-                 <%= link_to image_tag("logo.png", :border => 0), home_path %>
-                 </div>
-		        </div>
+                 <%= link_to image_tag("logo.png", :border => 0), root_path, :class=>"logo" %>
+       	        </div>
    	 	        <div class="col2of3">
-			        <nav class="mtm h2 msl">
+			        <nav class="h2">
     			    <%= link_to "Добавить желание", search_path,:class=>"link" %>
     			    <%= link_to "Мои желания", wishes_path,:class=>"link" %>
    			    	<%= link_to "Друзья", friends_path,:class=>"link" %>
@@ -35,30 +34,30 @@
   		        </div>
 	        </div>
         </div>
-        <div class="profile col1of5">
-          <div class="avatar" align="right">
-            <div class="photo mts" align="center"></div>
-            <div class="name h2 mtm pls" align="right">Анна Ротар</div>
-            <div class="exit mtm mls" align="right">
-           <%= link_to image_tag("exit.png", :border => 0), home_path %>
-           </div>
+        <div class="col1of5">
+          <div class="avatar">
+            <div class="photo"></div>
+            <div class="name h2">Анна Ротар</div>
+            <%= link_to image_tag("exit.png", :border => 0), root_path,:class=>"exit" %>
            </div>
         </div>
 	</div>
   <div class="polosa"></div>
 </header>
 <%= yield %>
+<div class="pusher"></div>
+</div>
 <footer>
   <div class="polosaF"></div>
   <div class="row">
     <div class="col1of2">
-        <div align="left">(C) 2012 Майвиш</div>
+        <div>&copy; 2012 Майвиш</div>
     </div>
     <div class="col1of2">
       <div class="contacts">
-        <div class="adminmywish mrs"></div>
-        <div class="vkontakte mrs"></div>
-        <div class="twitter"></div>
+        <div class="adminmywish"></div>
+		<%= link_to image_tag("vkontakte.png", :border => 0), "http://www.vk.com/",:class=>"vkontakte" %>
+		<%= link_to image_tag("twitter.png", :border => 0), "http://www.twitter.com/" %>
       </div>
     </div>
   </div>

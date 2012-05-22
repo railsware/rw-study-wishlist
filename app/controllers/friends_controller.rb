@@ -1,5 +1,16 @@
 class FriendsController < ApplicationController
-    
+  before_filter :set_current_user
+
+  protected
+
+  def set_current_user
+    if (current_user == nil)
+      render 'landing/not_login'
+    end
+  end
+
+  public
+
   def index
     val = current_user.friendships
     @friends = val.collect { |v| v.friend }

@@ -1,24 +1,25 @@
 <div style= "width: 1000px; height: 700px" >
-  <div class="wish_image" style="height: 150px; width: 150px; display: block; background-color: red; margin: 0 30px 0 250px; float: left; ">
+  <div class="wish_image" style="height: 150px; width: 150px; display: block; background-color: red; margin: 0px 10px 0px 0px; float: left; ">
   </div>
 
-  <div>
-    <div style="width: 150px; float: left; margin-top: -5px">
-      <p>Имя</p>
-      <p>Ссылка на сайт</p>
+  <div style= "width: 800px; height: 700px">
+    <div style="width: 100px; float: left; margin: -5px 5px 0px 0px">
+      <p>Имя</p><br />
+      <p>Ссылка на сайт</p><br />
       <p>Описание</p>
     </div>
-    <div style="width: 400px; float: right">
+    <div style="width: 530px; float: right; margin: -5px 0px 0px 0px; display: block;">
+
       <%=  form_for @wish, :url => {:action => "update"} do |f| %>
-          <%= f.text_field :name, :value => @wish.name%><br /><br />
-          <%=  f.text_field :url, :value => @wish.url%><br /><br />
+          <%= f.text_field :name, :value => @wish.name%><span id="error_name"></span><br /><br />
+          <%=  f.text_field :url, :value => @wish.url%><span id="error_url"></span><br /><br />
           <%=  f.text_area :description, :value => @wish.description%><br /><br />
           <p>Хочу на ... (1-5)</p>
-          <%= f.text_field :rating, :value => @wish.rating %><br /><br />
+          <%= f.text_field :rating, :value => @wish.rating %><span id="error_rating"></span><br /><br />
           <%= f.hidden_field :owner_id, :value => current_user.id %>
           <br /><br />
-          <%= link_to "Удалить", wish_path(@wish), :method => :delete%><br /><br />
-          <%=  f.submit "Сохранить" %>
+          <%=  f.submit "Сохранить", :border => 0 %>
+			<%=  link_to "Удалить", wish_path(@wish), :method => :delete %>
       <% end %>
     </div>
   </div>
