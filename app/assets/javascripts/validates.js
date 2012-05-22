@@ -37,11 +37,11 @@ $(document).ready(function () {
     }
     
     $("input#submit").click(function(){
-      if (!canBeSubmited) {
-        // here you should highlite errors
-        alert('Error')
-        return false;
-      }
+      // if (!canBeSubmited) {
+      //   // here you should highlite errors
+      //   alert('Error')
+      //   return false;
+      // }
     })
 
     $("input#wish_name").blur(function()
