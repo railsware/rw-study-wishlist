@@ -21,7 +21,7 @@ class LandingController < ApplicationController
     if (current_user)
       @title = "Welcome, dear #{current_user.name}";
     else
-      @title = "Welcome, dear guest"
+      @title = "Welcome, dear guest !!!!!!!!!!"
     end
   end
 
