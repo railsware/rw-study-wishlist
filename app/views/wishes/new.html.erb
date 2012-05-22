@@ -14,6 +14,7 @@
 <%=  form_for @wish, :url => {:action => "create"} do |f| %>
       <%= f.text_field :name, :value => @search_name.to_s %><span id="error_name"></span><br /><br />
       <%=  f.text_field :url, :value => @search_url.to_s %><span id="error_url"></span><br /><br />
+      <%=  f.file_field :image %><span id="error_url"></span><br /><br />
       <%=  f.text_area :description %><br /><br />
       <p>Хочу на ... (1-5)</p>
       <%= f.text_field :rating  %><span id="error_rating"></span><br /><br />
