@@ -1,1 +1,6 @@
 <h1>Show a single wish</h1>
+<p>name: <%= @wish.name %></p>
+<p>URL: <%= link_to @wish.url, @wish.url %></p>
+<p>description:<%= @wish.description %></p>
+<p>rating: <%= @wish.rating %></p>
+<p><%= link_to 'reserve',''%></p>

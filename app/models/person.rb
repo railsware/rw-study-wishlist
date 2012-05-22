@@ -23,7 +23,7 @@ class Person < ActiveRecord::Base
   attr_accessible :name, :birthday, :vk_id, :email, :is_user, :role
   has_many :friendships
   has_many :friends, :through => :friendships
-  has_many :wishes
+  has_many :wishes, :foreign_key => 'owner_id'
   has_many :reservation
 
   has_attached_file :avatar

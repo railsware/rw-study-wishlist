@@ -9,7 +9,12 @@
 
 <% if (@friends.size != 0)  %>
 <% @friends.each do |f| %>
-    <p><%= link_to f.name, friend_path(f)  %></p>
+    <p>
+    <%= link_to f.name, friend_path(f)  %>
+    <% if f.is_user == true %>
+      - is_user
+    <% end %>  
+    </p>
 <% end %>
 <% else %>
     <p>Your friendlist is empty</p>

@@ -13,5 +13,19 @@
   <% end %> 
 </p>
 
+</br>
+</br>
+
+<p>
+  <% if @friend.is_user == true %>
+  Wishlist:</br>
+  <%@wishes.each do |w| %>
+    <p><%= link_to w.name, wish_path(w) %></p>
+<% end %>
+  <% else%>
+    this person is not registered in system
+  <% end %>
+</p>
+
 
 

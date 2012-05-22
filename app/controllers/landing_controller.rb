@@ -9,6 +9,7 @@ class LandingController < ApplicationController
     if @person.persisted?
       session[:current_user_id] = @person.id
       flash[:notice] = "authentication success"
+      redirect_to root_url
     else
       flash[:notice] = "authentication error"
       redirect_to root_path
@@ -16,9 +17,18 @@ class LandingController < ApplicationController
   end
 
  
+ def home_page
+    if (current_user)
+      @title = "Welcome, dear #{current_user.name}";
+    else
+      @title = "Welcome, dear guest"
+    end
+
+  end 
+ 
   def not_login
-    @title = "Login Page"
     @_current_user = session[:current_user_id] = nil
+    redirect_to root_url
   end
 
 end

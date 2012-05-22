@@ -21,14 +21,12 @@ class WishesController < ApplicationController
 
   def index
     @title = "All your wishes"
-
-
-
     @wishes = Wish.where(:owner_id => current_user.id)
   end
 
   def show
     #Show a single wish
+    @wish = Wish.find(params[:id])
   end
 
   def new
