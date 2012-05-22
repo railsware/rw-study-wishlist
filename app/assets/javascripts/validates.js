@@ -7,30 +7,35 @@
  */
 $(document).ready(function () {
 
-    var emptyError = "Поле не может быть пустым";
-    var urlError = "Некоректный url";
+    var emptyError = "Пустое поле!";
+    var urlError = "Некоректный адрес";
     var ratingError = "Некоректный рейтинг";
     var nameMaxLengthError = "Слишком длинное имя";
     var nameMinLengthError = "Слишком короткое имя";
-    var errorName = "";
-    var errorUrl = "";
-    var errorRating = "";
+    var errorName = "?";
+    var errorUrl = "?";
+    var errorRating = "?";
+    var urlRegExp = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
+
+
+
 
     $("input#wish_name").blur(function()
     {
-       if ($(this).value.length == 0)
+        errorName = "";
+       if ($(this).val().length == 0)
        {
            errorName = emptyError;
        }
        else
        {
-           if ( ($(this).value.length > 0) && ($(this).value.length < 2))
+           if ( ($(this).val().length > 0) && ($(this).val().length < 2))
            {
                errorName = nameMinLengthError;
            }
            else
            {
-               if ($(this).value.length > 50)
+               if ($(this).val().length > 50)
                {
                    errorName = nameMaxLengthError;
                }
@@ -41,5 +46,60 @@ $(document).ready(function () {
 
 
     });
+
+    $("input#wish_rating").blur(function()
+    {
+        errorRating = "";
+
+        if ($(this).val().length == 0)
+        {
+            errorRating = emptyError;
+        }
+        else
+        {
+           if ($(this).val().length > 1)
+           {
+               errorRating = ratingError;
+           }
+           else
+           {
+               if ( ($(this).val().charCodeAt(0) < 49) || ($(this).val().charCodeAt(0) > 53) )
+               {
+                   errorRating = ratingError;
+               }
+           }
+        }
+
+        $("span#error_rating").text(errorRating);
+
+
+    });
+
+    $("input#wish_url").blur(function()
+    {
+        errorUrl = "";
+
+
+        if ($(this).val().length == 0)
+        {
+            errorUrl = emptyError;
+        }
+        else
+        {
+            if ($(this).val().match(urlRegExp) == null)
+            {
+               errorUrl = urlError;
+            }
+        }
+
+
+        $("span#error_url").text(errorUrl);
+
+
+    });
+
+
+
+
 
 });
