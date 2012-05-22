@@ -7,6 +7,14 @@
  */
 $(document).ready(function () {
 
+    function disableSubmit() {
+      canBeSubmited = false;
+      //$("input#submit").attr('disabled', true);
+    }
+
+
+
+    var canBeSubmited = false;
     var emptyError = "Пустое поле!";
     var urlError = "Некоректный адрес";
     var ratingError = "Некоректный рейтинг";
@@ -25,9 +33,16 @@ $(document).ready(function () {
     }
     else
     {
-       $("input#submit").attr('disabled', true);
+      disableSubmit()
     }
-
+    
+    $("input#submit").click(function(){
+      if (!canBeSubmited) {
+        // here you should highlite errors
+        alert('Error')
+        return false;
+      }
+    })
 
     $("input#wish_name").blur(function()
     {
@@ -112,11 +127,11 @@ $(document).ready(function () {
     {
        if ( (errorName == "") && (errorRating == "") && (errorUrl == ""))
        {
-         $("input#submit").attr('disabled', false);
+         disableSubmit();
        }
        else
        {
-         $("input#submit").attr('disabled', true);
+         disableSubmit();
        }
 
 
