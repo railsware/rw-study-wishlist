@@ -1,6 +1,6 @@
 class CreateWishes < ActiveRecord::Migration
   def change
-    create_table :wishes do |t|
+    create_table (:wishes, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8') do |t|
       t.string :name
       t.string :url
       t.text :description
