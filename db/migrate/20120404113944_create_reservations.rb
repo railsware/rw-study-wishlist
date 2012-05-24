@@ -1,6 +1,6 @@
 class CreateReservations < ActiveRecord::Migration
   def change
-    create_table (:reservations, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8') do |t|
+    create_table :reservations do |t|
       t.integer :wish_id
       t.integer :person_id
       t.timestamp :reservation_date
