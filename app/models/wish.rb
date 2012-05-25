@@ -17,7 +17,7 @@
 #
 
 class Wish < ActiveRecord::Base
-  attr_accessible :name, :url, :description, :rating, :owner_id
+  attr_accessible :name, :url, :description, :rating, :owner_id, :image
   belongs_to :owner, :class_name => 'Person'
   has_one :reservation
 	default_scope :order => 'rating DESC'
