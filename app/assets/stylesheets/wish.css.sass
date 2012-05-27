@@ -1,11 +1,13 @@
+/*Страница поиска*/
 .pole
   margin: 20px 0 0 165px
 
 .searchText
   text-align: center
 
-.searchField
-  width: 100%
+#searchField
+  border-radius: 3px
+  width: 70%
   float: left
   height: 30px
   margin: 3px 5px 0 0
@@ -17,6 +19,54 @@
   cursor: pointer
   height: 32px
   width: 76px
+
+/*Страница добавления желания*/
+.WishNewImage
+  background: url(asset_path("WishExample.png", image)) no-repeat
+  Height: 500px
+  Width: 500px
+
+.form
+  line-height: 22px
+  outline: 0px solid red
+  clear: both
+
+.form label
+  float: left
+  margin: 0 0 0 30px
+
+.form span
+  float: right
+
+.form input
+  border-radius: 1px
+  width: 70%
+  float: right
+  height: 20px
+
+.form textarea
+  border-radius: 1px
+  float: right
+  height: 100px
+  width: 70%
+
+.form a
+  float: right
+  margin: 48px 220px 0 0
+
+.form .submit
+  background: url(asset_path("save.png", image))
+  border: none
+  float: left
+  margin: 40px 0 0 30px
+  height: 43px
+  width: 160px
+.form .submit :hover
+  background-color: red
+
+.form .download
+  margin-top: 200px
+
 
 /* Временная подсветка валидации полей  */
 span
