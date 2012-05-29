@@ -4,20 +4,17 @@
    </div>
   <div class="col1of2">
     <div class="form">
-<%=  form_for @wish, :url => {:action => "create"} do |f| %>
+     <%=  form_for @wish, :url => {:action => "create"} do |f| %>
       <div class="mbs"><label>Название:</label><%= f.text_field :name, :value => @search_name.to_s %><!--<span id="error_name"></span>--><br></div>
       <div class="mbs"><label>Хочу на ... (1-5)</label><%= f.text_field :rating  %><!--<span id="error_rating"></span>--><br></div>
       <div class="mbs"><label>URL</label><%=  f.text_field :url, :value => @search_url.to_s %><!--<span id="error_url"></span>--><br></div>
       <div class="mbs"><label>Описание</label><%=  f.text_area :description %><br></div>
-
-
-
       <%=  f.submit "", :id => "submit", :class => "submit", :isEdit => false%>
       <%= link_to "Отмена", search_path %>
       <%= f.hidden_field :owner_id, :value => current_user.id %>
       <%=  f.file_field :image, :class => "download" %><!--<span id="error_url"></span>-->
     </div>
-          </div>
+  </div>
 </div>
 <% end %>
 
