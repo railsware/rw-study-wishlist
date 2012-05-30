@@ -52,20 +52,38 @@
 
 .form a
   float: right
+  font-size: 13px
   margin: 48px 220px 0 0
+.form a:hover
+  color: #0da918
+  text-decoration: none
 
 .form .submit
-  background: url(asset_path("save.png", image))
+  background: url(asset_path("save.png", image)) 0 0
   border: none
   float: left
   margin: 40px 0 0 30px
   height: 43px
   width: 160px
-.form .submit :hover
-  background: url(asset_path("save.png", image)) 0 -80px
+.form .submit:hover
+  background: url(asset_path("save.png", image)) 0 -68px
 
 .form .download
   margin-top: 200px
+
+
+/* Страница друзей*/
+
+.friendslink a
+  display: inline
+  font-size: 14px
+  text-decoration: none
+  margin-left: 50px
+  padding: 2px 1px 0 1px
+.friendslink a:hover
+  background: url(asset_path("gif.gif", image))
+
+
 
 
 
