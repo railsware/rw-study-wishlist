@@ -28,7 +28,6 @@
 
 .form
   line-height: 22px
-  outline: 0px solid red
   clear: both
 
 .form label
@@ -50,7 +49,7 @@
   height: 100px
   width: 70%
 
-.form a
+.form .cancel
   float: right
   font-size: 13px
   margin: 48px 220px 0 0
@@ -68,8 +67,14 @@
 .form .submit:hover
   background: url(asset_path("save.png", image)) 0 -68px
 
+.stars
+  margin-left: 50px
+  float: left
+  display: inline
+
 .form .download
   margin-top: 200px
+
 
 
 /* Страница друзей*/
@@ -84,9 +89,3 @@
   background: url(asset_path("gif.gif", image))
 
 
-
-
-
-/* Временная подсветка валидации полей  */
-span
-  background-color: #FF0000
