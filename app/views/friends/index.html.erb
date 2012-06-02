@@ -11,7 +11,7 @@
 <% @friends.each do |f| %>
     <p>
       <p><%= f.name %></p>
-      <p><%= link_to image_tag(f.avatar.url(:medium)), friend_path(f)%></p>
+      <p><%= link_to image_tag(f.avatar.url(:big)), friend_path(f)%></p>
       <% if f.is_user == true %>
         - is_user
       <% end %>  
