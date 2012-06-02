@@ -13,6 +13,8 @@ set :user, "whishlist"
 set :rvm_ruby_string, '1.9.3'
 set :rvm_type, :system
 set :bundle_flags,    "--deployment"
+set :normalize_asset_timestamps, false
+
 
 role :app, host
 role :web, host
@@ -33,4 +35,3 @@ ssh_options[:forward_agent] = true
 
 #require 'config/boot'
 #require 'hoptoad_notifier/capistrano'
-

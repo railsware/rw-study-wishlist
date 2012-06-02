@@ -1,7 +1,7 @@
 <p class="h1 searchText">Чтобы добавить желание введите название или URL</p>
 <div class="row pole">
 <%= form_tag(new_wish_path,  :method => :get) do %>
-    <%= text_field_tag(:query, nil, :class => "searchField") %>
+    <%= text_field_tag(:query, nil, :id => "searchField") %>
     <%= submit_tag("", :class => "searchButton") %>
 </div>
 <% end %>

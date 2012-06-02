@@ -1,23 +1,91 @@
+/*Страница поиска*/
 .pole
   margin: 20px 0 0 165px
 
 .searchText
   text-align: center
 
-.searchField
-  width: 100%
+#searchField
+  border-radius: 3px
+  width: 70%
   float: left
-  height: 29px
-  margin: 0 -5px 0 0
+  height: 30px
+  margin: 3px 5px 0 0
 
 
 .searchButton
   background: url(asset_path("search.png", image))
   border: none
   cursor: pointer
-  height: 29px
-  width: 74px
+  height: 32px
+  width: 76px
 
-/* Временная подсветка валидации полей  */
-span
-  background-color: #FF0000
+/*Страница добавления желания*/
+.WishNewImage
+  background: url(asset_path("WishExample.png", image)) no-repeat
+  Height: 500px
+  Width: 500px
+
+.form
+  line-height: 22px
+  clear: both
+
+.form label
+  float: left
+  margin: 0 0 0 30px
+
+.form span
+  float: right
+
+.form input
+  border-radius: 1px
+  width: 70%
+  float: right
+  height: 20px
+
+.form textarea
+  border-radius: 1px
+  float: right
+  height: 100px
+  width: 70%
+
+.form .cancel
+  float: right
+  font-size: 13px
+  margin: 48px 220px 0 0
+.form a:hover
+  color: #0da918
+  text-decoration: none
+
+.form .submit
+  background: url(asset_path("save.png", image)) 0 0
+  border: none
+  float: left
+  margin: 40px 0 0 30px
+  height: 43px
+  width: 160px
+.form .submit:hover
+  background: url(asset_path("save.png", image)) 0 -68px
+
+.stars
+  margin-left: 50px
+  float: left
+  display: inline
+
+.form .download
+  margin-top: 200px
+
+
+
+/* Страница друзей*/
+
+.friendslink a
+  display: inline
+  font-size: 14px
+  text-decoration: none
+  margin-left: 50px
+  padding: 2px 1px 0 1px
+.friendslink a:hover
+  background: url(asset_path("gif.gif", image))
+
+

@@ -1,28 +1,27 @@
-<div style= "width: 1000px; height: 700px" >
-  <div class="wish_image" style="height: 150px; width: 150px; display: block; background-color: red; margin: 0px 10px 0px 0px; float: left; ">
+<div class="row">
+  <div class="col1of2">
+    <div class="WishNewImage"></div>
   </div>
-
-  <div style= "width: 800px; height: 700px">
-    <div style="width: 100px; float: left; margin: -5px 5px 0px 0px">
-      <p>Имя</p><br />
-      <p>Ссылка на сайт</p><br />
-      <p>Описание</p>
-    </div>
-    <div style="width: 530px; float: right; margin: -5px 0px 0px 0px; display: block;">
-
+  <div class="col1of2">
+    <div class="form">
       <%=  form_for @wish, :url => {:action => "update"} do |f| %>
-          <%= f.text_field :name %><span id="error_name"></span><br /><br />
-          <%=  f.text_field :url %><span id="error_url"></span><br /><br />
-          <%=  f.file_field :image %><span id="error_url"></span><br /><br />
-          <%=  f.text_area :description%><br /><br />
-          <p>Хочу на ... (1-5)</p>
-          <%= f.text_field :rating, :value => @wish.rating %><span id="error_rating"></span><br /><br />
+          <div class="mbs"><label>Название:</label><%= f.text_field :name %><!--<span id="error_name"></span>--><br></div>
+          <div class="mbs"><label>Хочу на ... </label><div class="stars">
+            <%= f.hidden_field :rating, :value => @wish.rating %>
+            <%= f.radio_button :rating, "1", :class => "star", :checked => "checked" %>
+            <%= f.radio_button :rating, "2", :class => "star" %>
+            <%= f.radio_button :rating, "3", :class => "star" %>
+            <%= f.radio_button :rating, "4", :class => "star" %>
+            <%= f.radio_button :rating, "5", :class => "star" %></div>
+            <!--<span id="error_rating"></span>--><br></div>
+          <div class="mbs"><label>URL</label><%=  f.text_field :url %><!--<span id="error_url"></span>--><br></div>
+          <div class="mbs"><label>Описание</label><%=  f.text_area :description %><br></div>
+          <%=  f.submit "", :id => "submit", :class => "submit", :isEdit => true %>
+          <%= link_to "Удалить", wish_path(@wish),:class =>"cancel", :method => :delete %>
           <%= f.hidden_field :owner_id, :value => current_user.id %>
-          <br /><br />
-          <%=  f.submit "Сохранить", :border => 0, :id => "submit", :isEdit => true %>
-			<%=  link_to "Удалить", wish_path(@wish), :method => :delete %>
-      <% end %>
-    </div>
-  </div>
-
+          <%=  f.file_field :image, :class => "download" %><!--<span id="error_url"></span>-->
+     </div>
+   </div>
 </div>
+
+<% end %>

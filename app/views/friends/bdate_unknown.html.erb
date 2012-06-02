@@ -1,10 +1,10 @@
-<h1>Friends page</h1>
-<p><%= link_to 'all', :controller => 'friends', :action => 'index' %></p>
-<p><%= link_to '1 week', :controller => 'friends', :action => 'bdate_in_1_week' %></p>
-<p><%= link_to '2 weeks', :controller => 'friends', :action => 'bdate_in_2_weeks' %></p>
-<p><%= link_to '1 month', :controller => 'friends', :action => 'bdate_in_1_month' %></p>
-<p><%= link_to 'unknown', :controller => 'friends', :action => 'bdate_unknown' %></p>
-
+<div class="friendslink" align="center">
+  <%= link_to 'Все', '#' %>
+  <%= link_to '1 неделя', :controller => 'friends', :action => 'bdate_in_1_week' %>
+  <%= link_to '2 недели', :controller => 'friends', :action => 'bdate_in_2_weeks' %>
+  <%= link_to 'Месяц', :controller => 'friends', :action => 'bdate_in_1_month' %>
+  <%= link_to 'Дата неизвестна', :controller => 'friends', :action => 'bdate_unknown' %>
+</div>
 </br>
 
 <% if (@friends_unknown.size != 0)  %>
