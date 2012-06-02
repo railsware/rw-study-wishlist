@@ -30,9 +30,10 @@
             <div class="photo"></div>
             <div class="name h3">
               <%if current_user%>
+              <%= image_tag current_user.avatar.url%>
               <%= current_user.name %>
               <%else%>
-              <%= link_to 'Login', 'auth/vkontakte' %>
+              <%= link_to 'Login', 'auth/vkontakte'%>
               <%end%>
             </div>
             <%= link_to image_tag("exit.png", :border => 0), {:controller => "landing", :action => "logout"},:class=>"exit" %>

@@ -14,3 +14,20 @@
 //= require jquery_ujs
 //= require_tree .
 
+var newwindow;
+function login('/auth/vkontakte', width, height) {
+  var screenX     = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft,
+      screenY     = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop,
+      outerWidth  = typeof window.outerWidth != 'undefined' ? window.outerWidth : document.body.clientWidth,
+      outerHeight = typeof window.outerHeight != 'undefined' ? window.outerHeight : (document.body.clientHeight - 22),
+      left        = parseInt(screenX + ((outerWidth - width) / 2), 10),
+      top         = parseInt(screenY + ((outerHeight - height) / 2.5), 10),
+      features    = ('width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+
+      newwindow = window.open('/auth/vkontakte', 'Login', features);
+
+  if (window.focus)
+    newwindow.focus();
+
+  return false;
+}

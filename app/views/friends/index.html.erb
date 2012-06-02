@@ -11,6 +11,7 @@
 <% @friends.each do |f| %>
     <p>
     <%= link_to f.name, friend_path(f)  %>
+    <%= image_tag f.avatar.url%>
     <% if f.is_user == true %>
       - is_user
     <% end %>  
