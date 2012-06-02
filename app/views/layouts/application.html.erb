@@ -30,7 +30,7 @@
             <div class="photo"></div>
             <div class="name h3">
               <%if current_user%>
-              <%= image_tag current_user.avatar.url%>
+              <%= image_tag current_user.avatar.url(:small)%>
               <%= current_user.name %>
               <%else%>
               <%= link_to 'Login', 'auth/vkontakte'%>

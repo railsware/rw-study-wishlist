@@ -27,7 +27,7 @@ class Person < ActiveRecord::Base
   has_many :reservation
   
   default_scope :order => 'is_user DESC'
-  has_attached_file :avatar
+  has_attached_file :avatar, :styles => { :big => "200x200", :medium => "150x150>", :small => "50x50>" }
   
   
   attr_accessible :vk_id, :name, :is_user, :birthday, :avatar
@@ -35,7 +35,6 @@ class Person < ActiveRecord::Base
 
   def self.find_for_vkontakte_oauth access_token, friends_hashes
     if person = Person.where(:vk_id => access_token.uid, :is_user => true).first
-       #Person.create_friends friends_hashes, person
        person
     else
 	  if person = Person.where(:vk_id => access_token.uid, :is_user => false).first
@@ -55,7 +54,7 @@ class Person < ActiveRecord::Base
 	     						      end
     								end,
     								:vk_id => access_token.uid)
-    	person.update_attribute(:avatar,open(access_token.extra.raw_info.photo))
+    	person.update_attribute(:avatar,open(access_token.extra.raw_info.photo_big))
 		Person.create_friends friends_hashes, person
 		person
 	  end 
@@ -76,7 +75,7 @@ class Person < ActiveRecord::Base
 	     						   end 
 	     						 end,
 	     						 :vk_id => hash[:uid])
-	  friend.update_attribute(:avatar,open(hash[:photo]))  
+	  friend.update_attribute(:avatar,open(hash[:photo_big]))  
 	  end
 	  Friendship.create!(:person_id => person.id, :friend_id => friend.id )
     end

@@ -14,7 +14,6 @@ class FriendsController < ApplicationController
   def index
     val = current_user.friendships
     @friends = val.collect { |v| v.friend }
-    #@friends.order("is_user DESC")
   end
   
   def bdate_in_1_week

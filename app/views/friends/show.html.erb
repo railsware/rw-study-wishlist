@@ -1,4 +1,5 @@
 <p><%= @friend.name %></p>
+<p><%= image_tag @friend.avatar.url(:medium)%></p>
 <p><%=link_to 'http://vk.com/id' + @friend.vk_id,'http://vk.com/id' + @friend.vk_id  %></p>
 <p>
   Birthday: 
