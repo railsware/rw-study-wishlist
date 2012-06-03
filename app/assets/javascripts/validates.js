@@ -9,14 +9,17 @@
 
 $(document).ready(function () {
 
-
     var canBeSubmited = false;
-    var emptyErrorName = "Пустое поле имени";
+    var emptyErrorName = "Пустое поле названия";
     var emptyErrorUrl = "Пустое поле URL";
     var urlError = "Некоректный адрес";
-    var nameMaxLengthError = "Слишком длинное имя";
-    var nameMinLengthError = "Слишком короткое имя";
+    var nameMaxLengthError = "Слишком длинное название";
+    var nameMinLengthError = "Слишком короткое название";
     var urlRegExp = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
+    var wish_name = $("input#wish_name");
+    var wish_url = $("input#wish_url");
+    var submit =  $('input#submit');
+
 
     function name_validates(name)
     {
@@ -67,10 +70,6 @@ $(document).ready(function () {
     $("input#submit").click(function()
     {
 
-       var wish_name = $("input#wish_name");
-       var wish_url = $("input#wish_url");
-
-
        var errorName = name_validates(wish_name);
        var errorUrl = url_validates(wish_url);
 
@@ -86,12 +85,17 @@ $(document).ready(function () {
        }
        else
        {
+           setTimeout("submit.disabled = true", 0);
            return true;
        }
 
 
 
 
-    });
+    })
+
+
+
+
 
 })
