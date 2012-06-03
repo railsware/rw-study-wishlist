@@ -5,140 +5,93 @@
  * Time: 1:41 AM
  * To change this template use File | Settings | File Templates.
  */
+
+
 $(document).ready(function () {
-
-    function disableSubmit() {
-      canBeSubmited = false;
-      //$("input#submit").attr('disabled', true);
-    }
-
 
 
     var canBeSubmited = false;
-    var emptyError = "Пустое поле!";
+    var emptyErrorName = "Пустое поле имени";
+    var emptyErrorUrl = "Пустое поле URL";
     var urlError = "Некоректный адрес";
-    var ratingError = "Некоректный рейтинг";
     var nameMaxLengthError = "Слишком длинное имя";
     var nameMinLengthError = "Слишком короткое имя";
-    var errorName = "?";
-    var errorUrl = "?";
-    var errorRating = "?";
     var urlRegExp = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
 
-    if ($("input#submit").attr('isEdit') == "true" )
+    function name_validates(name)
     {
-       errorName = "";
-       errorUrl = "";
-       errorRating = "";
-    }
-    else
-    {
-      disableSubmit()
-    }
-    
-    $("input#submit").click(function(){
-      // if (!canBeSubmited) {
-      //   // here you should highlite errors
-      //   alert('Error')
-      //   return false;
-      // }
-    })
-
-    $("input#wish_name").blur(function()
-    {
-
-        errorName = "";
-       if ($(this).val().length == 0)
-       {
-           errorName = emptyError;
-       }
-       else
-       {
-           if ( ($(this).val().length > 0) && ($(this).val().length < 2))
-           {
-               errorName = nameMinLengthError;
-           }
-           else
-           {
-               if ($(this).val().length > 50)
-               {
-                   errorName = nameMaxLengthError;
-               }
-           }
-       }
-
-       $("span#error_name").text(errorName);
-
-
-    });
-
-    $("input#wish_rating").blur(function()
-    {
-        errorRating = "";
-
-        if ($(this).val().length == 0)
+        if (name.val().length == 0)
         {
-            errorRating = emptyError;
+            return emptyErrorName;
         }
         else
         {
-           if ($(this).val().length > 1)
-           {
-               errorRating = ratingError;
-           }
-           else
-           {
-               if ( ($(this).val().charCodeAt(0) < 49) || ($(this).val().charCodeAt(0) > 53) )
-               {
-                   errorRating = ratingError;
-               }
-           }
-        }
-
-        $("span#error_rating").text(errorRating);
-
-
-    });
-
-    $("input#wish_url").blur(function()
-    {
-        errorUrl = "";
-
-
-        if ($(this).val().length == 0)
-        {
-            errorUrl = emptyError;
-        }
-        else
-        {
-            if ($(this).val().match(urlRegExp) == null)
+            if ( ( name.val().length > 0) && (name.val().length < 2) )
             {
-               errorUrl = urlError;
+                return nameMinLengthError;
+            }
+            else
+            {
+                if (name.val().length > 50)
+                {
+                    return  nameMaxLengthError;
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
+    }
 
-        $("span#error_url").text(errorUrl);
-
-
-    });
-
-    $("input#wish_name, input#wish_url, input#wish_rating").blur(function()
+    function url_validates (url)
     {
-       if ( (errorName == "") && (errorRating == "") && (errorUrl == ""))
+        if (url.val().length == 0)
+        {
+            return emptyErrorUrl;
+        }
+        else
+        {
+            if (url.val().match(urlRegExp) == null)
+            {
+                return urlError;
+            }
+            else
+            {
+                return "";
+            }
+        }
+    }
+    
+    $("input#submit").click(function()
+    {
+
+       var wish_name = $("input#wish_name");
+       var wish_url = $("input#wish_url");
+
+
+       var errorName = name_validates(wish_name);
+       var errorUrl = url_validates(wish_url);
+
+       if (errorName != "")
        {
-         disableSubmit();
+           alert(errorName);
+           return false;
+       }
+       if (errorUrl != "")
+       {
+           alert(errorUrl);
+           return false;
        }
        else
        {
-         disableSubmit();
+           return true;
        }
+
+
 
 
     });
 
-
-
-
-
-});
+})

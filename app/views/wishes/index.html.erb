@@ -3,7 +3,6 @@
 <%  if (@wishes.size != 0)  %>
 <%@wishes.each do |w| %>
     <p><%= link_to w.name, edit_wish_path(w)  %>, URL:  <%= w.url %></p>
-    <%= image_tag w.image.url%>
 <% end %>
 
 <% else %>
