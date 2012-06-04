@@ -39,4 +39,5 @@ tmp/**/*
 tmp/
 /config/database.yml
 .backups
+/config/initializers/omniauth.rb
 *~
