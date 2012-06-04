@@ -1,5 +1,5 @@
 <div class="friendslink" align="center">
-  <%= link_to 'Все', '#' %>
+  <%= link_to 'Все', :controller => 'friends', :action => 'index' %>
   <%= link_to '1 неделя', :controller => 'friends', :action => 'bdate_in_1_week' %>
   <%= link_to '2 недели', :controller => 'friends', :action => 'bdate_in_2_weeks' %>
   <%= link_to 'Месяц', :controller => 'friends', :action => 'bdate_in_1_month' %>
@@ -9,10 +9,14 @@
 
 <% if (@friends_1_week.size != 0)  %>
 <% @friends_1_week.each do |f| %>
-    <p><%= link_to f.name, friend_path(f)  %></p>
+    <p>
+      <p><%= link_to f.name, friend_path(f)  %></p>
+      <p><%= image_tag f.avatar.url(:big)%></p>
+      <% if f.is_user == true %>
+        - is_user
+      <% end %>  
+    </p>
 <% end %>
 <% else %>
-    <p>Your friendlist is empty</p>
+    <p>friendlist is empty</p>
 <% end %>
-
-<p>Count: <%= @friends_1_week.count %></p>

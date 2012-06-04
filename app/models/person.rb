@@ -17,7 +17,7 @@
 #  created_at          :datetime        not null
 #  updated_at          :datetime        not null
 #
-
+require "open-uri"
 class Person < ActiveRecord::Base
   set_table_name "people"
   attr_accessible :name, :birthday, :vk_id, :email, :is_user, :role
@@ -25,8 +25,10 @@ class Person < ActiveRecord::Base
   has_many :friends, :through => :friendships
   has_many :wishes, :foreign_key => 'owner_id'
   has_many :reservation
-
-  has_attached_file :avatar
+  
+  default_scope :order => 'is_user DESC'
+  has_attached_file :avatar, :styles => { :big => "200x200", :medium => "150x150>", :small => "50x50>" }
+  
   
   attr_accessible :vk_id, :name, :is_user, :birthday, :avatar
 
@@ -51,7 +53,8 @@ class Person < ActiveRecord::Base
 	     						        DateTime.strptime(access_token.extra.raw_info.bdate, '%d.%m')
 	     						      end
     								end,
-    								:vk_id => access_token.uid)#, :avatar => access_token.extra.raw_info.photo)
+    								:vk_id => access_token.uid)
+    	person.update_attribute(:avatar,open(access_token.extra.raw_info.photo_big))
 		Person.create_friends friends_hashes, person
 		person
 	  end 
@@ -71,9 +74,10 @@ class Person < ActiveRecord::Base
 	     						     DateTime.strptime(hash[:bdate], '%d.%m')
 	     						   end 
 	     						 end,
-	     						 :vk_id => hash[:uid])#, :avatar => hash[:photo])	
-	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )	     
-	  end	
+	     						 :vk_id => hash[:uid])
+	  friend.update_attribute(:avatar,open(hash[:photo_big]))  
+	  end
+	  Friendship.create!(:person_id => person.id, :friend_id => friend.id )
     end
   end
 end
