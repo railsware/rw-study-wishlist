@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505195957) do
+ActiveRecord::Schema.define(:version => 20120605201908) do
 
   create_table "friendships", :force => true do |t|
     t.string   "person_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120505195957) do
     t.string   "role"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "vk_avatar_url"
   end
 
   add_index "people", ["vk_id"], :name => "index_people_on_vk_id"
