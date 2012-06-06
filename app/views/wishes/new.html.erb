@@ -3,6 +3,7 @@
     <div class="WishNewImage"></div>
    </div>
   <div class="col1of2">
+    <h2 style="background-color: #ff0000; " ><%= flash[:error] %> </h2>
     <div class="form">
      <%=  form_for @wish, :url => {:action => "create"} do |f| %>
       <div class="mbs"><label>Название:</label><%= f.text_field :name, :value => @search_name.to_s %><!--<span id="error_name"></span>--><br></div>

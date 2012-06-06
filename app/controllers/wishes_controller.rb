@@ -63,8 +63,10 @@ class WishesController < ApplicationController
   def create
     @wish = Wish.new(params[:wish])
     if @wish.save
+      flash[:success] = "Your wish was saved successfully"
       redirect_to wishes_path
     else
+      flash[:error] = "Error in wish saving"
       redirect_to new_wish_path # Временно
     end
 
@@ -83,6 +85,7 @@ class WishesController < ApplicationController
   def destroy
     @wish = Wish.find(params[:id])
     @wish.destroy
+    flash[:success] = "Your wish was delete successfully"
     redirect_to wishes_path
   end
 
