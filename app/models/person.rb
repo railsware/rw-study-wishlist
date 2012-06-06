@@ -76,7 +76,7 @@ class Person < ActiveRecord::Base
 	     						 end,
 	     						 :vk_id => hash[:uid], :vk_avatar_url => hash[:photo_medium_rec])
 	  end
-	  Friendship.create!(:person_id => person.id, :friend_id => hash[:uid])
+	  Friendship.create!(:person_id => person.id, :friend_id => friend.id )
     end
   end
 end
