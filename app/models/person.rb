@@ -76,6 +76,9 @@ class Person < ActiveRecord::Base
 	     						 end,
 	     						 :vk_id => hash[:uid], :vk_avatar_url => hash[:photo_medium_rec])
 	  end
+	  else
+	    friend = Person.where(:vk_id => hash[:uid]).first
+	  end
 	  Friendship.create!(:person_id => person.id, :friend_id => friend.id )
     end
   end
