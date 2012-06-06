@@ -75,7 +75,6 @@ class Person < ActiveRecord::Base
 	     						   end 
 	     						 end,
 	     						 :vk_id => hash[:uid], :vk_avatar_url => hash[:photo_medium_rec])
-	  end
 	  else
 	    friend = Person.where(:vk_id => hash[:uid]).first
 	  end
