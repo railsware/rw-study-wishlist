@@ -39,8 +39,7 @@ class Person < ActiveRecord::Base
        person
     else
 	  if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => false).first
-  		person.is_user = true
-  		person.save
+	    person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]), :is_user => true)
 		Person.create_friends friends_hashes, person
 		person
 	  else
