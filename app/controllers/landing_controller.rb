@@ -3,8 +3,10 @@ class LandingController < ApplicationController
     @title = "Welcome"
 	  auth_hash = request.env['omniauth.auth']
 	  @app = VkontakteApi::Client.new(auth_hash.credentials.token)
-	  friends_hashes = @app.friends.get(fields: 'uid, first_name, last_name, bdate, photo_medium, photo_medium_rec, photo_big')
-	  @person = Person.find_for_vkontakte_oauth auth_hash, friends_hashes
+	  friends_hashes = @app.friends.get(fields: 'uid, first_name, last_name, bdate, photo_medium_rec')
+	  users_hash = @app.users.get(uids: auth_hash.uid, fields: 'photo_medium_rec')
+	  current_user_hash = users_hash.first
+	  @person = Person.find_for_vkontakte_oauth auth_hash, friends_hashes, current_user_hash 
 
     if @person.persisted?
       session[:current_user_id] = @person.id

@@ -27,17 +27,17 @@ class Person < ActiveRecord::Base
   has_many :reservation
   
   default_scope :order => 'is_user DESC'
-  has_attached_file :avatar, :styles => { :big => "200x200", :medium => "150x150>", :small => "50x50>" }
+  has_attached_file :avatar, :styles => { :big => "150x150", :medium => "100x100>", :small => "30x30>" }
   
   
-  attr_accessible :vk_id, :name, :is_user, :birthday, :avatar
+  attr_accessible :vk_id, :name, :is_user, :birthday, :avatar, :vk_avatar_url
 
 
-  def self.find_for_vkontakte_oauth access_token, friends_hashes
-    if person = Person.where(:vk_id => access_token.uid, :is_user => true).first
+  def self.find_for_vkontakte_oauth access_token, friends_hashes, current_user_hash 
+    if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => true).first
        person
     else
-	  if person = Person.where(:vk_id => access_token.uid, :is_user => false).first
+	  if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => false).first
   		person.is_user = true
   		person.save
 		Person.create_friends friends_hashes, person
@@ -54,7 +54,7 @@ class Person < ActiveRecord::Base
 	     						      end
     								end,
     								:vk_id => access_token.uid)
-    	person.update_attribute(:avatar,open(access_token.extra.raw_info.photo_big))
+    	person.update_attribute(:avatar,open(current_user_hash[:photo_medium_rec]))
 		Person.create_friends friends_hashes, person
 		person
 	  end 
@@ -74,8 +74,7 @@ class Person < ActiveRecord::Base
 	     						     DateTime.strptime(hash[:bdate], '%d.%m')
 	     						   end 
 	     						 end,
-	     						 :vk_id => hash[:uid])
-	  friend.update_attribute(:avatar,open(hash[:photo_big]))  
+	     						 :vk_id => hash[:uid], :vk_avatar_url => hash[:photo_medium_rec])
 	  end
 	  Friendship.create!(:person_id => person.id, :friend_id => friend.id )
     end

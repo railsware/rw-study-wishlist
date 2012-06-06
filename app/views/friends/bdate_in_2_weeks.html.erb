@@ -10,8 +10,8 @@
 <% if (@friends_2_weeks.size != 0)  %>
 <% @friends_2_weeks.each do |f| %>
     <p>
-      <p><%= link_to f.name, friend_path(f)  %></p>
-      <p><%= image_tag f.avatar.url(:big)%></p>
+      <p><%= f.name %></p>
+      <p><%= link_to image_tag(f.vk_avatar_url), friend_path(f)%></p>
       <% if f.is_user == true %>
         - is_user
       <% end %>  
