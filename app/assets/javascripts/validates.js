@@ -9,78 +9,85 @@
 
 $(document).ready(function () {
 
-    var canBeSubmited = false;
-    var emptyErrorName = "Пустое поле названия";
     var emptyErrorUrl = "Пустое поле URL";
-    var urlError = "Некоректный адрес";
-    var nameMaxLengthError = "Слишком длинное название";
-    var nameMinLengthError = "Слишком короткое название";
+    var formatErrorUrl = "Некоректный адрес";
+    var MaxLengthErrorName = "Слишком длинное название";
+    var MinLengthErrorName = "Слишком короткое название";
     var urlRegExp = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
-    var wish_name = $("input#wish_name");
-    var wish_url = $("input#wish_url");
     var submit =  $('input#submit');
+    var wishName = $("input#wish_name");
+    var wishUrl = $("input#wish_url");
 
 
-    function name_validates(name)
+    function isNameValid(nameVal)
     {
-        if (name.val().length == 0)
+        if ( (nameVal.length < 2) || (nameVal.length > 50) )
         {
-            return emptyErrorName;
+          return false;
         }
         else
         {
-            if ( ( name.val().length > 0) && (name.val().length < 2) )
-            {
-                return nameMinLengthError;
-            }
-            else
-            {
-                if (name.val().length > 50)
-                {
-                    return  nameMaxLengthError;
-                }
-                else
-                {
-                    return "";
-                }
-            }
+          return true;
         }
 
     }
 
-    function url_validates (url)
+
+    function isUrlValid(urlVal)
     {
-        if (url.val().length == 0)
+        if ( (urlVal.length == 0) || (urlVal.match(urlRegExp) == null) )
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
+    function getInvalidNameError(nameVal)
+    {
+        if (nameVal.length < 2)
+        {
+          return MinLengthErrorName;
+        }
+        else //50 or more characters
+        {
+          return MaxLengthErrorName;
+        }
+
+    }
+
+
+    function getInvalidUrlError(urlVal)
+    {
+        if (urlVal.length == 0)
         {
             return emptyErrorUrl;
         }
         else
         {
-            if (url.val().match(urlRegExp) == null)
-            {
-                return urlError;
-            }
-            else
-            {
-                return "";
-            }
+            return formatErrorUrl;
         }
+
     }
+
     
     $("input#submit").click(function()
     {
+        var wishNameVal = wishName.val();
+        var wishUrlVal = wishUrl.val();
 
-       var errorName = name_validates(wish_name);
-       var errorUrl = url_validates(wish_url);
-
-       if (errorName != "")
+       if (isNameValid(wishNameVal) == false)
        {
-           alert(errorName);
+           alert(getInvalidNameError(wishNameVal));
            return false;
        }
-       if (errorUrl != "")
+
+       if (isUrlValid(wishUrlVal) == false)
        {
-           alert(errorUrl);
+           alert(getInvalidUrlError(wishUrlVal));
            return false;
        }
        else
@@ -89,13 +96,6 @@ $(document).ready(function () {
            return true;
        }
 
-
-
-
     })
-
-
-
-
 
 })
