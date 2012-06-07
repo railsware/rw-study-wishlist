@@ -21,6 +21,7 @@ gem 'vk_api'
 
 gem 'exception_notification'
 
+gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/ludicast/yaml_db.git
+  revision: 768eafdac8ffce647b8201ff4e7e9d78c641dc56
+  specs:
+    yaml_db (0.2.3)
+
+GIT
   remote: https://github.com/railsware/js-routes
   revision: aeb3d7b9ae9f3be350144f9a7c17cd5702c42f2a
   specs:
@@ -243,3 +249,4 @@ DEPENDENCIES
   vkontakte_api
   whenever
   will_paginate
+  yaml_db!
