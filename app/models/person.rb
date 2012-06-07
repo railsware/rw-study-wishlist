@@ -54,7 +54,8 @@ class Person < ActiveRecord::Base
 	     						      end
     								end,
     								:vk_id => access_token.uid)
-    	person.update_attribute(:avatar,open(current_user_hash[:photo_medium_rec]))
+    	person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]),
+    							 :vk_avatar_url => current_user_hash[:photo_medium_rec])
 		Person.create_friends friends_hashes, person
 		person
 	  end 
@@ -63,7 +64,8 @@ class Person < ActiveRecord::Base
 
   def self.create_friends friends_hashes, person
     friends_hashes.each do |hash|
-	  if Person.where(:vk_id => hash[:uid]).first == nil
+      friend = Person.where(:vk_id => hash[:uid]).first
+	  if friend == nil
 	     friend = Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => 
 	     						 if hash[:bdate] == nil
 	     						   nil 
