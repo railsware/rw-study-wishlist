@@ -16,7 +16,9 @@
 #  role                :string(255)
 #  created_at          :datetime        not null
 #  updated_at          :datetime        not null
+#  vk_avatar_url       :string(255)
 #
+
 require "open-uri"
 class Person < ActiveRecord::Base
   set_table_name "people"

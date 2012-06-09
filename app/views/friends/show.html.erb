@@ -14,12 +14,12 @@
   <% end %> 
 </p>
 
-</br>
-</br>
+<br />
+<br />
 
 <p>
   <% if @friend.is_user == true %>
-  Wishlist:</br>
+  Wishlist:<br />
   <%@wishes.each do |w| %>
     <p><%= link_to w.name, wish_path(w) %></p>
 <% end %>

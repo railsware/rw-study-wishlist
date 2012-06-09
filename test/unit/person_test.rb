@@ -16,6 +16,7 @@
 #  role                :string(255)
 #  created_at          :datetime        not null
 #  updated_at          :datetime        not null
+#  vk_avatar_url       :string(255)
 #
 
 require 'test_helper'
