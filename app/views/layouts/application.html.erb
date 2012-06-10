@@ -20,7 +20,7 @@
                       <%= link_to "Добавить желание", search_path, :class => is_active("wishes", "search") %>
     			    <%= link_to "Мои желания", wishes_path, :class => is_active("wishes", "index")  %>
    			    	<%= link_to "Друзья", friends_path, :class => is_active("friends", "index") %>
-    			    <%= link_to "Резерв", '#',:class=>"link1" %>
+    			    <%= link_to "Резерв", reserve_path,:class=> is_active("wishes", "reserve") %>
 			        </nav>
   		        </div>
 	        </div>

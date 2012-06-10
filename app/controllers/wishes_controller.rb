@@ -93,5 +93,9 @@ class WishesController < ApplicationController
     @title = "Search a wish"
   end
 
+  def reserve
+    @title = "Reserve wishes page"
+  end
+
 
 end

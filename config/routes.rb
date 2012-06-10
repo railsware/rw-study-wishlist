@@ -15,6 +15,7 @@ Wishlist::Application.routes.draw do
   match '/friends_whose_birthday_is_unknown', :to => 'friends#bdate_unknown'
   match '/search', :to => 'wishes#search', :as => 'search'
   match '/new', :to => 'wishes#new'
+  match '/reserve', :to => 'wishes#reserve', :as => 'reserve'
 
   root :to => 'landing#home_page'
 
