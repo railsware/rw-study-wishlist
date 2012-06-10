@@ -1,9 +1,9 @@
 module ApplicationHelper
   def is_active(param_controller, param_action)
-    if ( current_page?(:controller => param_controller, :action => param_action) )
-     "current_page_link"
+    if (params[:controller] == param_controller && params[:action] == param_action)
+    'current_page_link'
     else
-     "link1"
+      (params[:controller] == param_controller && params[:action] == 'new' && param_action == 'search') ? 'current_page_link' : 'link1'
     end
   end
 
