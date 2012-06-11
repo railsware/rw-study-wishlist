@@ -29,11 +29,16 @@
           <div class="avatar">
             <div class="name h3">
               <%if current_user%>
-              <%= image_tag current_user.avatar.url(:medium), :class=>"photo" %>
+              <%= image_tag current_user.vk_avatar_url, :class=>"photo" %>
               <%= current_user.name %>
               <%= link_to image_tag("exit.png", :border => 0), {:controller => "landing", :action => "logout"},:class=>"exit" %>
               <%else%>
-              <%= link_to 'Login', 'auth/vkontakte'%>
+                  <% if Rails.env == "development" %>
+                      <%= link_to 'Login', 'local_login'%>
+                  <% else %>
+                      <%= link_to 'Login', 'auth/vkontakte'%>
+                  <% end %>
+
               <%end%>
             </div>
 

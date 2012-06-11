@@ -1,0 +1,8 @@
+<% if Rails.env == "development" %>
+     <h3>Please select which person want you login as</h3>
+ <% @local_user.all.each do |u| %>
+   <%= link_to u.name, local_user_path(u)  %><br />
+ <% end %>
+<% else %>
+    <p>This page is not available in this mode</p>
+<% end %>

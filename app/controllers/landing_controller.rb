@@ -27,6 +27,24 @@ class LandingController < ApplicationController
     end
   end
 
+  def local_login
+    @title = "Local login"
+    @local_user = Person.where(:is_user => true)
+  end
+
+  def local_login_as
+    @title = "Local login"
+    @person = Person.find(params[:id])
+    if @person.persisted?
+      session[:current_user_id] = @person.id
+      flash[:notice] = "authentication success"
+      redirect_to root_path
+    else
+      flash[:notice] = "authentication error"
+      redirect_to root_path
+    end
+  end
+
   def logout
     @_current_user = session[:current_user_id] = nil
     redirect_to root_path

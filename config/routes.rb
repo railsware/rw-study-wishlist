@@ -16,6 +16,8 @@ Wishlist::Application.routes.draw do
   match '/search', :to => 'wishes#search', :as => 'search'
   match '/new', :to => 'wishes#new'
   match '/reserve', :to => 'wishes#reserve', :as => 'reserve'
+  match '/local_login', :to => 'landing#local_login', :as => 'local_login'
+  match '/local_login/:id', :to => 'landing#local_login_as', :as => 'local_user'
 
   root :to => 'landing#home_page'
 
