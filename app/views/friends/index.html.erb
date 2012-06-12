@@ -9,16 +9,17 @@
 
 <% if (@friends.size != 0)  %>
 <% @friends.each do |f| %>
-    <p>
-      <p><%= f.name %></p>
-          <p><%= link_to image_tag(f.vk_avatar_url), friend_path(f)%></p>
+    <div class="friends">
+        <div class="friendsAvatars"><%= link_to image_tag(f.vk_avatar_url), friend_path(f)%></div>
+        <div class="friendsName"><%= f.name %></div>
       <% if f.is_user == true %>
         - is_user
       <% end %>  
-    </p>
+    </div>
 <% end %>
 <% else %>
     <p>friendlist is empty</p>
 <% end %>
+
 
 
