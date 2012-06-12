@@ -9,7 +9,7 @@ Wishlist::Application.routes.draw do
   match '/home',  :to => 'landing#home_page'
   match '/auth/vkontakte/callback', :to => 'landing#login'
   match '/logout', :to => 'landing#logout'
-  match '/friends_whose_birthday_is_in_one_week', :to => 'friends#bdate_in_1_week'
+  match '/friends_whose_birthday_is_in_one_week', :to => 'friends#bdate_in_1_week', :as => 'friends_one_week'
   match '/friends_whose_birthday_is_in_two_weeks', :to => 'friends#bdate_in_2_weeks'
   match '/friends_whose_birthday_is_in_one_month', :to => 'friends#bdate_in_1_month'
   match '/friends_whose_birthday_is_unknown', :to => 'friends#bdate_unknown'
