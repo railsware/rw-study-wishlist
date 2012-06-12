@@ -20,5 +20,13 @@ module ApplicationHelper
 
   end
 
+  def friends_menu_class(link_type, active_class = 'current_friends_page', inactive_class = 'friendslink')
+    if params[:action] == link_type
+     active_class
+    else
+      inactive_class
+    end
+  end
+
 
 end

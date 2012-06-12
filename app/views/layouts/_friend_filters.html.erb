@@ -1,8 +1,8 @@
 <div class="friendslink" align="center">
-  <%= link_to 'Все', friends_path, :class => 'current_friends_page' %>
-  <%= link_to '1 неделя', :controller => 'friends', :action => 'bdate_in_1_week'  %>
-  <%= link_to '2 недели', :controller => 'friends', :action => 'bdate_in_2_weeks' %>
-  <%= link_to 'Месяц', :controller => 'friends', :action => 'bdate_in_1_month' %>
-  <%= link_to 'Дата неизвестна', :controller => 'friends', :action => 'bdate_unknown' %>
+  <%= link_to 'Все', friends_path, :class => friends_menu_class('index') %>
+  <%= link_to '1 неделя', friends_one_week_path, :class => friends_menu_class('bdate_in_1_week')  %>
+  <%= link_to '2 недели', friends_two_weeks_path, :class => friends_menu_class('bdate_in_2_weeks') %>
+  <%= link_to 'Месяц', friends_one_month_path, :class => friends_menu_class('bdate_in_1_month') %>
+  <%= link_to 'Дата неизвестна', friends_unknown_path, :class => friends_menu_class('bdate_unknown') %>
 </div>
 </br>
