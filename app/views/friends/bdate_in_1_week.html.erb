@@ -1,21 +1,14 @@
-<div class="friendslink" align="center">
-  <%= link_to 'Все', :controller => 'friends', :action => 'index' %>
-  <%= link_to '1 неделя', :controller => 'friends', :action => 'bdate_in_1_week' %>
-  <%= link_to '2 недели', :controller => 'friends', :action => 'bdate_in_2_weeks' %>
-  <%= link_to 'Месяц', :controller => 'friends', :action => 'bdate_in_1_month' %>
-  <%= link_to 'Дата неизвестна', :controller => 'friends', :action => 'bdate_unknown' %>
-</div>
-</br>
+<%= render 'layouts/friend_filters' %>
 
 <% if (@friends_1_week.size != 0)  %>
 <% @friends_1_week.each do |f| %>
-    <p>
-      <p><%= f.name %></p>
-      <p><%= link_to image_tag(f.vk_avatar_url), friend_path(f)%></p>
-      <% if f.is_user == true %>
-        - is_user
-      <% end %>  
-    </p>
+        <div class="friends">
+          <div class="friendsAvatars"><%= link_to image_tag(f.vk_avatar_url), friend_path(f)%></div>
+          <div class="friendsName"><%= f.name %></div>
+          <% if f.is_user == true %>
+              - is_user
+          <% end %>
+        </div>
 <% end %>
 <% else %>
     <p>friendlist is empty</p>

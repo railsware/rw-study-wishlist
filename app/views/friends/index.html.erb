@@ -1,11 +1,4 @@
-<div class="friendslink" align="center">
-<%= link_to 'Все', '#' %>
-<%= link_to '1 неделя', :controller => 'friends', :action => 'bdate_in_1_week' %>
-<%= link_to '2 недели', :controller => 'friends', :action => 'bdate_in_2_weeks' %>
-<%= link_to 'Месяц', :controller => 'friends', :action => 'bdate_in_1_month' %>
-<%= link_to 'Дата неизвестна', :controller => 'friends', :action => 'bdate_unknown' %>
-</div>
-</br>
+<%= render 'layouts/friend_filters' %>
 
 <% if (@friends.size != 0)  %>
 <% @friends.each do |f| %>
@@ -14,7 +7,7 @@
         <div class="friendsName"><%= f.name %></div>
       <% if f.is_user == true %>
         - is_user
-      <% end %>  
+      <% end %>
     </div>
 <% end %>
 <% else %>
