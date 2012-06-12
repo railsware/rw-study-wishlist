@@ -1,10 +1,24 @@
 module ApplicationHelper
-  def is_active(param_controller, param_action)
-    if (params[:controller] == param_controller && params[:action] == param_action)
-    'current_page_link'
-    else
-      (params[:controller] == param_controller && ( params[:action] == 'new' && param_action == 'search' )) ? 'current_page_link' : 'link1'
-    end
+
+  def top_menu_class(link_type, active_class = 'current_page_link', inactive_class = 'link1')
+    c = params[:controller]
+    a = params[:action]
+    active = case link_type
+               when :add_wish
+                 c == 'wishes' && (a == 'search' || a == 'new')
+               when :list_wishes
+                 c == 'wishes' && (a == 'index' || a == 'edit')
+               when :friends
+                 c == 'friends'
+               when :reserve
+                 c == 'wishes' && a == 'reserve'
+               else
+                 false
+             end
+
+    active ? active_class : inactive_class
+
   end
+
 
 end

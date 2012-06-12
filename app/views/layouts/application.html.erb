@@ -17,10 +17,10 @@
        	        </div>
    	 	        <div class="col3of4">
 			        <nav class="h2">
-                      <%= link_to "Добавить желание", search_path, :class => (params[:controller] == 'wishes' && (params[:action] == 'search' || params[:action] == 'new')) ? 'current_page_link' : 'link1' %>
-    			    <%= link_to "Мои желания", wishes_path, :class => (params[:controller] == 'wishes' && (params[:action] == 'index' || params[:action] == 'edit')) ? 'current_page_link' : 'link1'  %>
-   			    	<%= link_to "Друзья", friends_path, :class => (params[:controller] == 'friends') ? 'current_page_link' : 'link1' %>
-    			    <%= link_to "Резерв", reserve_path,:class=> (params[:controller] == 'wishes' && (params[:action] == 'reserve')) ? 'current_page_link' : 'link1' %>
+                    <%= link_to "Добавить желание", search_path, :class => top_menu_class(:add_wish) %>
+    			    <%= link_to "Мои желания", wishes_path, :class => top_menu_class(:list_wishes)  %>
+   			    	<%= link_to "Друзья", friends_path, :class => top_menu_class(:friends) %>
+    			    <%= link_to "Резерв", reserve_path, :class=> top_menu_class(:reserve) %>
 			        </nav>
   		        </div>
 	        </div>
