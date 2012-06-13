@@ -14,6 +14,7 @@ class FriendsController < ApplicationController
   def index
     val = current_user.friendships
     @friends = val.collect { |v| v.friend }
+    @friends = @friends.sort_by { |hsh| [hsh[:is_user] ? 0:1]}
   end
   
   def bdate_in_1_week
@@ -21,6 +22,7 @@ class FriendsController < ApplicationController
     friends = index
     @friends_1_week = friends.collect { |v| if v.birthday != nil then if (v.birthday.month == d_now.month)&&(v.birthday.day - d_now.day <= 7)&&(v.birthday.day - d_now.day >= 0) then v end end }
     @friends_1_week.delete(nil)
+    @friends = @friends.sort_by { |hsh| [hsh[:is_user] ? 0:1]}
   end
   
   def bdate_in_2_weeks
@@ -28,6 +30,7 @@ class FriendsController < ApplicationController
     friends = index
     @friends_2_weeks = friends.collect { |v| if v.birthday != nil then if (v.birthday.month == d_now.month)&&(v.birthday.day - d_now.day <= 14)&&(v.birthday.day - d_now.day >= 0) then v end end }
     @friends_2_weeks.delete(nil)
+    @friends_2_weeks = @friends_2_weeks.sort_by { |hsh| [hsh[:is_user] ? 0:1]}
   end
   
   def bdate_in_1_month
@@ -35,6 +38,7 @@ class FriendsController < ApplicationController
     friends = index
     @friends_1_month = friends.collect { |v| if v.birthday != nil then if ((v.birthday.month == d_now.month)&&(v.birthday.day - d_now.day >= 0))||((v.birthday.month == d_now.month + 1)&&(d_now.day - v.birthday.day >= 0)) then v end end }
     @friends_1_month.delete(nil)
+    @friends_1_month = @friends_1_month.sort_by { |hsh| [hsh[:is_user] ? 0:1]}
   end
   
   def bdate_unknown
@@ -42,6 +46,7 @@ class FriendsController < ApplicationController
     friends = index
     @friends_unknown = friends.collect { |v| if v.birthday == nil then v end }
     @friends_unknown.delete(nil)
+    @friends_unknown = @friends_unknown.sort_by { |hsh| [hsh[:is_user] ? 0:1]}
   end
   
   def show
