@@ -20,11 +20,12 @@
 <p>
   <% if @friend.is_user == true %>
   Wishlist:<br />
-      <%  if @wishes.size != 0 %>
-          <% @wishes.each do |w| %>
-              <p><%= image_tag(w.image, :border => 0, :class => 'WishIndexImage')%></p>
-          <% end %>
-
+      <%  if (@wishes.size != 0)  %>
+          <div id="container">
+            <%@wishes.each do |w| %>
+                <%= link_to image_tag(w.image, :border => 0, :class => 'item'), '#' %>
+            <% end %>
+          </div>
       <% else %>
           <p>Список желаний пуст</p>
       <% end %>
