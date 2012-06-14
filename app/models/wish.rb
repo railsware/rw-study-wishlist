@@ -21,7 +21,7 @@ class Wish < ActiveRecord::Base
   belongs_to :owner, :class_name => 'Person'
   has_one :reservation
 	default_scope :order => 'rating DESC'
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :image
 
   validates :name, :presence => true, :length => {:in => 2..50}
   validates :url, :presence => true, :format =>  {:with => /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix }
