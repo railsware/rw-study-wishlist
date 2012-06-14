@@ -2,7 +2,8 @@
 <h3 style="background-color: #7fffd4; " ><%= flash[:success] %> </h3>
 <%  if (@wishes.size != 0)  %>
 <%@wishes.each do |w| %>
-    <p><%= link_to w.name, edit_wish_path(w)  %>, URL:  <%= w.url %></p>
+    <p><%= link_to image_tag(w.image, :border => 0, :class => 'WishIndexImage'), edit_wish_path(w) %>
+      <%= link_to w.name, edit_wish_path(w)  %>, URL:  <%= w.url %></p>
 <% end %>
 
 <% else %>
