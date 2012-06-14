@@ -1,5 +1,7 @@
+
+<%= image_tag(@friend.vk_avatar_url, :class => 'FriendAvatar')%>
+<div class="FriendInformation">
 <p><%= @friend.name %></p>
-<p><%= image_tag(@friend.vk_avatar_url)%></p>
 <p><%=link_to 'http://vk.com/id' + @friend.vk_id,'http://vk.com/id' + @friend.vk_id  %></p>
 <p>
   Birthday: 
@@ -14,12 +16,9 @@
   <% end %> 
 </p>
 
-<br />
-<br />
-
 <p>
   <% if @friend.is_user == true %>
-  Wishlist:<br />
+  <br />
       <%  if (@wishes.size != 0)  %>
           <div id="container">
             <%@wishes.each do |w| %>
@@ -34,6 +33,7 @@
     this person is not registered in system
   <% end %>
 </p>
+</div>
 
 
 
