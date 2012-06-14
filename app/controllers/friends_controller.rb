@@ -47,7 +47,7 @@ class FriendsController < ApplicationController
   def show
     #d_now = DateTime.now
     @friend = Person.find(params[:id])
-    @wishes = Person.find(params[:id]).wishes
+    @wishes = Wish.where(:owner_id => params[:id])
     #@days_till_bday = Person.find(params[:id]).birthday - d.now
   end
   
