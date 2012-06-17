@@ -56,8 +56,8 @@ class FriendsController < ApplicationController
   end
   
   def show
-    @title = "Page by #{@friend.name}"
     @friend = Person.find(params[:id])
+    @title = "Page by #{@friend.name}"
 	@wishes = Wish.where(:owner_id => params[:id])
     @days_till_bday = days_till_bday
   end
