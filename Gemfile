@@ -18,6 +18,7 @@ gem 'omniauth-vkontakte'
 gem 'localtunnel'
 gem 'vkontakte_api'
 gem 'vk_api'
+gem 'russian'
 
 gem 'exception_notification'
 

@@ -4,11 +4,12 @@
 <p>
   Birthday: 
   <% if @friend.birthday != nil %>
-    <%= @friend.birthday.day %> -
+    <%= @friend.birthday.day %> /
     <%= @friend.birthday.month %>
     <% if @friend.birthday.year < 2012 %>
-      - <%= @friend.birthday.year %>
+      / <%= @friend.birthday.year %>
     <% end %>
+    <%= @days_till_bday %>
   <% else %>
     unknown 
   <% end %> 
