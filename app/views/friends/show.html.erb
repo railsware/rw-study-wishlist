@@ -1,5 +1,7 @@
+
+<%= image_tag(@friend.vk_avatar_url, :class => 'FriendAvatar')%>
+<div class="FriendInformation">
 <p><%= @friend.name %></p>
-<p><%= image_tag(@friend.vk_avatar_url)%></p>
 <p><%=link_to 'http://vk.com/id' + @friend.vk_id,'http://vk.com/id' + @friend.vk_id  %></p>
 <p>
   Birthday: 
@@ -15,19 +17,24 @@
   <% end %> 
 </p>
 
-<br />
-<br />
-
 <p>
   <% if @friend.is_user == true %>
-  Wishlist:<br />
-  <%@wishes.each do |w| %>
-    <p><%= link_to w.name, wish_path(w) %></p>
-<% end %>
+  <br />
+      <%  if (@wishes.size != 0)  %>
+          <div id="container">
+            <%@wishes.each do |w| %>
+                <%= link_to image_tag(w.image, :border => 0, :class => 'item'), '#' %>
+            <% end %>
+          </div>
+      <% else %>
+          <p>Список желаний пуст</p>
+      <% end %>
+
   <% else%>
     this person is not registered in system
   <% end %>
 </p>
+</div>
 
 
 

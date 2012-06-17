@@ -1,0 +1,10 @@
+<div class="mbs"><label>Хочу на ... </label><div class="stars">
+  <%= f.radio_button :rating, "1", :class => "star", :checked => "checked" %>
+  <%= f.radio_button :rating, "2", :class => "star" %>
+  <%= f.radio_button :rating, "3", :class => "star" %>
+  <%= f.radio_button :rating, "4", :class => "star" %>
+  <%= f.radio_button :rating, "5", :class => "star" %></div>
+  <!--<span id="error_rating"></span>--><br></div>
+<div class="mbs"><label>URL</label><%=  f.text_field :url %><!--<span id="error_url"></span>--><br></div>
+<div class="mbs"><label>Описание</label><%=  f.text_area :description %><br></div>
+<%=  f.submit :value => "", :id => "submit", :class => "submit" %>

@@ -38,6 +38,7 @@ class WishesController < ApplicationController
   def show
     #Show a single wish
     @wish = Wish.find(params[:id])
+    @title = "#{@wish.name}"
   end
 
   def new
