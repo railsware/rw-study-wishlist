@@ -72,10 +72,10 @@ class FriendsController < ApplicationController
     else	
     	if (bday > d_now)
     		count = (bday - d_now).to_int
-    		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
+    		#'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
     	else
   			count = 365 - (d_now - bday).to_int
-    		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
+    		#'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
   		end	
   	end		
   end
