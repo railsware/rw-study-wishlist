@@ -37,7 +37,7 @@
                   <% if Rails.env == "development" %>
                       <%= link_to 'Login', 'local_login'%>
                   <% else %>
-                      <%= link_to 'Login', 'auth/vkontakte'%>
+                      <%= link_to 'Login', 'auth/vkontakte', :class => "popup", :"data-width" => 600, :"data-height" => 400%>
                   <% end %>
               <%end%>
            </div>

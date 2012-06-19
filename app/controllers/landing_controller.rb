@@ -11,7 +11,7 @@ class LandingController < ApplicationController
     if @person.persisted?
       session[:current_user_id] = @person.id
       flash[:notice] = "authentication success"
-      redirect_to root_path
+      render "login"
     else
       flash[:notice] = "authentication error"
       redirect_to root_path
