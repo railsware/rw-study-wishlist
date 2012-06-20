@@ -7,8 +7,8 @@
         <div class="friendsName"><%= f.name %></div>
       <% if f.is_user == true %>
         - is_user 
-      <%= f.wishes.size - current_user.friendships.find(f.id).wish_num unless 
-      (f.wishes.size - current_user.friendships.find(f.id).wish_num) == 0 %>
+      <%= f.wishes.size - current_user.friendships.where(:friend_id => f.id).first.wish_num unless 
+      (f.wishes.size - current_user.friendships.where(:friend_id => f.id).first.wish_num) == 0 %>
       <% end %>
     </div>
 <% end %>

@@ -60,7 +60,7 @@ class FriendsController < ApplicationController
     @title = "Page by #{@friend.name}"
 	@wishes = Wish.where(:owner_id => params[:id])
     @days_till_bday = days_till_bday
-    current_user.friendships.find(params[:id]).update_attribute(:wish_num, @wishes.size)
+    current_user.friendships.where(:friend_id => params[:id]).first.update_attribute(:wish_num, @wishes.size)
   end
   
   def days_till_bday
