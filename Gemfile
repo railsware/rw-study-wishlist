@@ -19,9 +19,9 @@ gem 'localtunnel'
 gem 'vkontakte_api'
 gem 'vk_api'
 gem 'russian'
-
+gem 'resque'
+gem 'resque-scheduler'
 gem 'exception_notification'
-
 gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
 
 # Gems used only for assets and not required
