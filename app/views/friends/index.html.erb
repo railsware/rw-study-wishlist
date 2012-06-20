@@ -6,7 +6,9 @@
         <div class="friendsAvatars"><%= link_to image_tag(f.vk_avatar_url), friend_path(f)%></div>
         <div class="friendsName"><%= f.name %></div>
       <% if f.is_user == true %>
-        - is_user
+        - is_user 
+      <%= f.wishes.size - current_user.friendships.find(f.id).wish_num unless 
+      (f.wishes.size - current_user.friendships.find(f.id).wish_num) == 0 %>
       <% end %>
     </div>
 <% end %>
