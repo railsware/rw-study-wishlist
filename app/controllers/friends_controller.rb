@@ -62,7 +62,8 @@ class FriendsController < ApplicationController
     @days_till_bday = days_till_bday
     current_user.friendships.where(:friend_id => params[:id]).first.update_attribute(:wish_num, @wishes.size)
   end
-  
+
+
   def days_till_bday
 
     if Person.find(params[:id]).birthday == nil then return end
