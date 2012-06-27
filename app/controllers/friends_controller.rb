@@ -70,15 +70,15 @@ class FriendsController < ApplicationController
     bday = DateTime.strptime(Person.find(params[:id]).birthday.to_s[5, Person.find(params[:id]).birthday.to_s.length],'%m-%d')
     if (d_now == bday)
     	'сегодня'
-    else	
+    else
     	if (bday > d_now)
     		count = (bday - d_now).to_int
     		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
     	else
   			count = 365 - (d_now - bday).to_int
     		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
-  		end	
-  	end		
+  		end
+  	end
   end
     
 end

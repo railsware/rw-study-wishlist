@@ -38,6 +38,8 @@ class WishesController < ApplicationController
   def show
     #Show a single wish
     @wish = Wish.find(params[:id])
+    @friend = Person.find(@wish.owner_id)
+    @days_till_bday = 100
     @title = "#{@wish.name}"
   end
 

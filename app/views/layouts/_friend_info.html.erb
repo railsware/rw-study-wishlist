@@ -1,0 +1,15 @@
+<p><%= @friend.name %></p>
+<p><%=link_to 'http://vk.com/id' + @friend.vk_id,'http://vk.com/id' + @friend.vk_id  %></p>
+<p>
+  День рождения:
+  <% if @friend.birthday != nil %>
+      <%= @friend.birthday.day %> /
+      <%= @friend.birthday.month %>
+      <% if @friend.birthday.year < 2012 %>
+          / <%= @friend.birthday.year %>
+      <% end %>
+      <%= @days_till_bday %>
+  <% else %>
+      дата неизвестна
+  <% end %>
+</p>

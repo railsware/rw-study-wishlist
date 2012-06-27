@@ -1,21 +1,8 @@
 
 <%= image_tag(@friend.vk_avatar_url, :class => 'FriendAvatar')%>
 <div class="FriendInformation">
-<p><%= @friend.name %></p>
-<p><%=link_to 'http://vk.com/id' + @friend.vk_id,'http://vk.com/id' + @friend.vk_id  %></p>
-<p>
-  День рождения: 
-  <% if @friend.birthday != nil %>
-    <%= @friend.birthday.day %> /
-    <%= @friend.birthday.month %>
-    <% if @friend.birthday.year < 2012 %>
-      / <%= @friend.birthday.year %>
-    <% end %>
-    <%= @days_till_bday %>
-  <% else %>
-    дата неизвестна
-  <% end %> 
-</p>
+
+  <%= render 'layouts/friend_info'  %>
 
 <p>
   <% if @friend.is_user == true %>
@@ -23,7 +10,7 @@
       <%  if (@wishes.size != 0)  %>
           <div id="container">
             <%@wishes.each do |w| %>
-                <%= link_to image_tag(w.image, :border => 0, :class => 'item'), '#' %>
+                <%= link_to image_tag(w.image, :border => 0, :class => 'item'), w %>
             <% end %>
           </div>
       <% else %>
