@@ -20,7 +20,8 @@ Wishlist::Application.routes.draw do
   match '/local_login/:id', :to => 'landing#local_login_as', :as => 'local_user'
 
   root :to => 'landing#home_page'
-
+  
+  mount Resque::Server, :at => "/resque"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

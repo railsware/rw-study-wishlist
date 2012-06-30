@@ -37,12 +37,13 @@ class Person < ActiveRecord::Base
 
   def self.find_for_vkontakte_oauth access_token, friends_hashes, current_user_hash 
     if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => true).first
-       person.update_attribute(:avatar,open(current_user_hash[:photo_medium_rec]))
+       #person.update_attribute(:avatar,open(current_user_hash[:photo_medium_rec]))
        person
     else
 	  if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => false).first
 	    person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]), :is_user => true)
 		Person.create_friends friends_hashes, person
+		#Resque.enqueue(CreatFriends, friends_hashes, person)
 		person
 	  else
     		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday =>
@@ -58,6 +59,7 @@ class Person < ActiveRecord::Base
     								:vk_id => access_token.uid)
     	person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]),
     							 :vk_avatar_url => current_user_hash[:photo_medium_rec])
+    	#Resque.enqueue(CreatFriends, friends_hashes, person)
 		Person.create_friends friends_hashes, person
 		person
 	  end 
