@@ -44,6 +44,7 @@ group :test do
 end
 
 group :development do
+  gem "rspec-rails"
   gem 'annotate', '~> 2.4.1.beta'
   gem "thin", :require => false
 end

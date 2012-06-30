@@ -62,7 +62,8 @@ class FriendsController < ApplicationController
     @days_till_bday = days_till_bday
     current_user.friendships.where(:friend_id => params[:id]).first.update_attribute(:wish_num, @wishes.size)
   end
-  
+
+
   def days_till_bday
 
     if Person.find(params[:id]).birthday == nil then return end
@@ -70,15 +71,15 @@ class FriendsController < ApplicationController
     bday = DateTime.strptime(Person.find(params[:id]).birthday.to_s[5, Person.find(params[:id]).birthday.to_s.length],'%m-%d')
     if (d_now == bday)
     	'сегодня'
-    else	
+    else
     	if (bday > d_now)
     		count = (bday - d_now).to_int
     		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
     	else
   			count = 365 - (d_now - bday).to_int
     		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
-  		end	
-  	end		
+  		end
+  	end
   end
     
 end

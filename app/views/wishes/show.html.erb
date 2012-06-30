@@ -1,6 +1,45 @@
-<h1>Show a single wish</h1>
-<p>name: <%= @wish.name %></p>
-<p>URL: <%= link_to @wish.url, @wish.url %></p>
-<p>description:<%= @wish.description %></p>
-<p>rating: <%= @wish.rating %></p>
-<p><%= link_to 'reserve',''%></p>
+<%= image_tag(@friend.vk_avatar_url, :class => 'FriendAvatar')%>
+<div class="FriendInformation">
+
+  <%= render 'layouts/friend_info'  %>
+  <br /><br />
+  <div class="row">
+    <div class="col1of2">
+      <div>
+        <p>
+          <%= image_tag(@wish.image, :border => 0)  %>
+        </p>
+      </div>
+    </div>
+    <div class="col1of2">
+      <div class="form">
+        <%=  form_for @wish, :url => {:action => "update"} do |f| %>
+            <div class="mbs"><label>Название:</label><%= f.text_field :name %><!--<span id="error_name"></span>--><br></div>
+
+            <div class="mbs"><label>Хочу на ... </label><div class="stars">
+              <%= f.radio_button :rating, "1", :class => "star", :checked => "checked" %>
+              <%= f.radio_button :rating, "2", :class => "star" %>
+              <%= f.radio_button :rating, "3", :class => "star" %>
+              <%= f.radio_button :rating, "4", :class => "star" %>
+              <%= f.radio_button :rating, "5", :class => "star" %></div>
+              <!--<span id="error_rating"></span>--><br></div>
+            <div class="mbs"><label>URL</label><%=  f.text_field :url %><!--<span id="error_url"></span>--><br></div>
+            <div class="mbs"><label>Описание</label><%=  f.text_area :description %><br></div>
+
+            <%= f.hidden_field :owner_id, :value => Person.find(@wish.owner_id).name %><!--<span id="error_url"></span>-->
+        <% end %>
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
