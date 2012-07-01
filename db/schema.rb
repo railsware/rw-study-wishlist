@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620093231) do
+ActiveRecord::Schema.define(:version => 20120701150857) do
 
   create_table "friendships", :force => true do |t|
     t.string   "person_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20120620093231) do
     t.datetime "reservation_date"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "friend_id"
   end
 
   add_index "reservations", ["person_id", "wish_id"], :name => "index_reservations_on_person_id_and_wish_id"

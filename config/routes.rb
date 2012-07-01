@@ -15,7 +15,9 @@ Wishlist::Application.routes.draw do
   match '/friends_whose_birthday_is_unknown', :to => 'friends#bdate_unknown', :as => 'friends_unknown'
   match '/search', :to => 'wishes#search', :as => 'search'
   match '/new', :to => 'wishes#new'
-  match '/reserve', :to => 'wishes#reserve', :as => 'reserve'
+  match '/reserve', :to => 'reserve#index', :as => 'reserve_index'
+  match '/reserve/:id/add', :to => 'reserve#add_reserve', :as => 'add_reserve'
+  match '/reserve/:id/delete', :to => 'reserve#delete_reserve', :as => 'delete_reserve'
   match '/local_login', :to => 'landing#local_login', :as => 'local_login'
   match '/local_login/:id', :to => 'landing#local_login_as', :as => 'local_user'
 

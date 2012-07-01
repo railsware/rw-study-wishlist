@@ -28,9 +28,9 @@
             <div class="mbs"><label>Описание</label><%=  f.text_area :description %><br></div>
             <br />
             <% if Reservation.find_by_wish_id(@wish.id) == nil %>
-                <%= link_to "Зарезервировать", '#' %>
+                <%= link_to "Зарезервировать", add_reserve_path(@wish) %>
             <% else %>
-                <%= link_to "Отмена резерва", '#' %>
+                <%= link_to "Отмена резерва", delete_reserve_path(@wish) %>
             <% end %>
 
             <%= f.hidden_field :owner_id, :value => Person.find(@wish.owner_id).name %><!--<span id="error_url"></span>-->
