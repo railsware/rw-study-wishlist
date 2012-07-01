@@ -98,6 +98,11 @@ class WishesController < ApplicationController
 
   def reserve
     @title = "Reserve wishes page"
+    @user = current_user
+    @reservations = Reservation.where(:person_id => @user.id)
+
+
+
   end
 
 

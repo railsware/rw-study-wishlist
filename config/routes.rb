@@ -3,7 +3,7 @@ Wishlist::Application.routes.draw do
   resources :wishes
   resources :friends
 
-  get "friends/index" 
+  get "friends/index"
   get "profile/edit"
 
   match '/home',  :to => 'landing#home_page'
