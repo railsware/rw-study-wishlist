@@ -12,7 +12,7 @@ module ApplicationHelper
                when :friends
                  c == 'friends'
                when :reserve
-                 c == 'wishes' && a == 'reserve'
+                 c == 'reserve' || (c == 'wishes' && a == 'show')
                else
                  false
              end
