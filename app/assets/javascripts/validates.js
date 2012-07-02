@@ -98,7 +98,7 @@ $(document).ready(function () {
     $("input#submit").click(function()
     {
         var wishNameVal = wishName.val();
-        var wishUrlVal = wishUrl.val();
+        var wishUrlVal = wishUrl.val().toLowerCase();
         var wishImageVal = wishImage.val();
 
        if (isNameValid(wishNameVal) == false)
