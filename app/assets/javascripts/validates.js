@@ -13,10 +13,12 @@ $(document).ready(function () {
     var formatErrorUrl = "Некоректный адрес";
     var MaxLengthErrorName = "Слишком длинное название";
     var MinLengthErrorName = "Слишком короткое название";
+    var emptyErrorImage = "Прикрепите картинку";
     var urlRegExp = /^((http|https|ftp):\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g;
     var submit =  $('input#submit');
     var wishName = $("input#wish_name");
     var wishUrl = $("input#wish_url");
+    var wishImage = $("input#wish_image");
 
 
     function isNameValid(nameVal)
@@ -45,6 +47,25 @@ $(document).ready(function () {
         }
 
     }
+
+    function isImageValid(imageVal)
+    {
+       if (imageVal == "")
+       {
+           return false
+       }
+       else
+       {
+           return true
+       }
+
+    }
+
+    function getInvalidImageError(imageVal)
+    {
+        return emptyErrorImage
+    }
+
 
     function getInvalidNameError(nameVal)
     {
@@ -78,6 +99,7 @@ $(document).ready(function () {
     {
         var wishNameVal = wishName.val();
         var wishUrlVal = wishUrl.val();
+        var wishImageVal = wishImage.val();
 
        if (isNameValid(wishNameVal) == false)
        {
@@ -89,6 +111,12 @@ $(document).ready(function () {
        {
            alert(getInvalidUrlError(wishUrlVal));
            return false;
+       }
+
+       if (isImageValid(wishImageVal) == false)
+       {
+           alert(getInvalidImageError(wishImageVal));
+           return false
        }
        else
        {
