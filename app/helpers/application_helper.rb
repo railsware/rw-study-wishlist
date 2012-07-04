@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ApplicationHelper
 
   def top_menu_class(link_type, active_class = 'current_page_link', inactive_class = 'link1')
@@ -11,7 +12,7 @@ module ApplicationHelper
                when :friends
                  c == 'friends'
                when :reserve
-                 c == 'wishes' && a == 'reserve'
+                 c == 'reserve' || (c == 'wishes' && a == 'show')
                else
                  false
              end
@@ -27,6 +28,8 @@ module ApplicationHelper
       inactive_class
     end
   end
+
+
 
 
 

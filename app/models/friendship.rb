@@ -15,3 +15,5 @@ class Friendship < ActiveRecord::Base
   
   attr_accessible :person_id, :friend_id, :wish_num
 end
+
+

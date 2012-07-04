@@ -11,6 +11,7 @@
 #
 
 class Reservation < ActiveRecord::Base
+ attr_accessible :wish, :person, :reservation_date, :friend_id
  belongs_to :person
  belongs_to :wish
 end

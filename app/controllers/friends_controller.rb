@@ -59,27 +59,26 @@ class FriendsController < ApplicationController
     @friend = Person.find(params[:id])
     @title = "Page by #{@friend.name}"
 	@wishes = Wish.where(:owner_id => params[:id])
-    @days_till_bday = days_till_bday
+    @days_till_bday = days_till_bday(@friend)
     current_user.friendships.where(:friend_id => params[:id]).first.update_attribute(:wish_num, @wishes.size)
   end
 
 
-  def days_till_bday
-
-    if Person.find(params[:id]).birthday == nil then return end
+  def days_till_bday(friend)
+    if friend.birthday == nil then return end
     d_now = DateTime.strptime(DateTime.now.to_s[5,DateTime.now.to_s.length],'%m-%d')
-    bday = DateTime.strptime(Person.find(params[:id]).birthday.to_s[5, Person.find(params[:id]).birthday.to_s.length],'%m-%d')
+    bday = DateTime.strptime(friend.birthday.to_s[5, friend.birthday.to_s.length],'%m-%d')
     if (d_now == bday)
-    	'сегодня'
+      'сегодня'
     else
-    	if (bday > d_now)
-    		count = (bday - d_now).to_int
-    		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
-    	else
-  			count = 365 - (d_now - bday).to_int
-    		'( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
-  		end
-  	end
+      if (bday > d_now)
+        count = (bday - d_now).to_int
+        '( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
+      else
+        count = 365 - (d_now - bday).to_int
+        '( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
+      end
+    end
   end
     
 end

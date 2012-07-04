@@ -1,22 +1,5 @@
-# == Schema Information
-#
-# Table name: people
-#
-#  id                  :integer(4)      not null, primary key
-#  name                :string(255)
-#  birthday            :datetime
-#  avatar_file_name    :string(255)
-#  avatar_content_type :string(255)
-#  avatar_file_size    :integer(4)
-#  avatar_updated_at   :datetime
-#  vk_id               :string(255)
-#  email               :string(255)
-#  privacy_type        :string(255)
-#  is_user             :boolean(1)
-#  role                :string(255)
-#  created_at          :datetime        not null
-#  updated_at          :datetime        not null
-#
+# encoding: utf-8
+
 class WishesController < ApplicationController
   before_filter :set_current_user
 
@@ -39,8 +22,25 @@ class WishesController < ApplicationController
     #Show a single wish
     @wish = Wish.find(params[:id])
     @friend = Person.find(@wish.owner_id)
-    @days_till_bday = 100
+    @days_till_bday = days_till_bday(@friend)
     @title = "#{@wish.name}"
+  end
+
+  def days_till_bday(friend)
+    if friend.birthday == nil then return end
+    d_now = DateTime.strptime(DateTime.now.to_s[5,DateTime.now.to_s.length],'%m-%d')
+    bday = DateTime.strptime(friend.birthday.to_s[5, friend.birthday.to_s.length],'%m-%d')
+    if (d_now == bday)
+      'сегодня'
+    else
+      if (bday > d_now)
+        count = (bday - d_now).to_int
+        '( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
+      else
+        count = 365 - (d_now - bday).to_int
+        '( через ' + count.to_s + ' '+ Russian.p(count,'день','дня','дней','дня') + ' )'
+      end
+    end
   end
 
   def new
@@ -94,10 +94,6 @@ class WishesController < ApplicationController
 
   def search
     @title = "Search a wish"
-  end
-
-  def reserve
-    @title = "Reserve wishes page"
   end
 
 

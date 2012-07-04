@@ -1,0 +1,10 @@
+<h3 style="background-color: #7fffd4; " ><%= flash[:success] %> </h3>
+<%  if @reservations.size != 0 %>
+    <div id="container">
+      <% @reservations.each do |r| %>
+          <%= link_to image_tag(r.wish.image, :border => 0, :class => 'item'), r.wish %>
+      <% end %>
+    </div>
+<% else  %>
+     <h3>У вас нет зарезервированных желаний</h3>
+<%  end %>
