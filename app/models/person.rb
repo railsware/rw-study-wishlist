@@ -32,17 +32,18 @@ class Person < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :big => "150x150", :medium => "100x100>", :small => "30x30>" }
   
   
-  attr_accessible :vk_id, :name, :is_user, :birthday, :avatar, :vk_avatar_url
+  attr_accessible :vk_id, :name, :is_user, :birthday, :avatar, :vk_avatar_url, :updated_at
 
 
-  def self.find_for_vkontakte_oauth access_token, friends_hashes, current_user_hash 
+  def self.find_for_vkontakte_oauth access_token, friends_hashes, current_user_hash
+    token = access_token.credentials.token 
     if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => true).first
        person
     else
 	  if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => false).first
 	    person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]), :is_user => true)
-		Person.create_friends friends_hashes, person
-		#Resque.enqueue(CreatFriends, friends_hashes, person)
+		#Person.create_friends friends_hashes, person
+		Resque.enqueue(CreateFriends, person.id, token)
 		person
 	  else
     		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday =>
@@ -58,8 +59,8 @@ class Person < ActiveRecord::Base
     								:vk_id => access_token.uid)
     	person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]),
     							 :vk_avatar_url => current_user_hash[:photo_medium_rec])
-    	#Resque.enqueue(CreatFriends, friends_hashes, person)
-		Person.create_friends friends_hashes, person
+    	Resque.enqueue(CreateFriends, person.id, token)
+		#Person.create_friends friends_hashes, person
 		person
 	  end 
     end
@@ -84,4 +85,43 @@ class Person < ActiveRecord::Base
 	  Friendship.create!(:person_id => person.id, :friend_id => friend.id )
     end
   end
+  
+  def self.update_friends friends_hashes, person
+    friends_in_db = person.friendships.collect {|f| f.friend}
+    friends_in_db.each do |f|
+      if !(friends_hashes.include? f)
+         Friendship.where(:person_id => person.id, :friend_id => f.id ).destroy
+      end
+    end
+    friends_hashes.each do |hash|
+      friend = Person.where(:vk_id => hash[:uid]).first
+	  if friend == nil
+	     friend = Person.create!(:is_user => false, :name =>hash[:first_name] + " " + hash[:last_name], :birthday => 
+	     						 if hash[:bdate] == nil
+	     						   nil 
+	     						 else
+	     						   if hash[:bdate].length > 5
+	     						     DateTime.strptime(hash[:bdate], '%d.%m.%Y')
+	     						   else
+	     						     DateTime.strptime(hash[:bdate], '%d.%m')
+	     						   end 
+	     						 end,
+	     						 :vk_id => hash[:uid], :vk_avatar_url => hash[:photo_medium_rec])
+	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )
+	  else
+		 friend.update_attributes(:name =>hash[:first_name] + " " + hash[:last_name], :birthday => 
+	     						 if hash[:bdate] == nil
+	     						   nil 
+	     						 else
+	     						   if hash[:bdate].length > 5
+	     						     DateTime.strptime(hash[:bdate], '%d.%m.%Y')
+	     						   else
+	     						     DateTime.strptime(hash[:bdate], '%d.%m')
+	     						   end 
+	     						 end,
+	     						 :vk_avatar_url => hash[:photo_medium_rec], :updated_at => DateTime.now)
+	  end
+    end
+  end
+  
 end

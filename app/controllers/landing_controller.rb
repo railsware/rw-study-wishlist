@@ -13,6 +13,7 @@ class LandingController < ApplicationController
       vk_id = auth_hash.uid
       flash[:notice] = "authentication success"
       Resque.enqueue(UpdateUser, @person.id, vk_id, token)
+      Resque.enqueue(UpdateFriends, @person.id, token)
       render "login"
     else
       flash[:notice] = "authentication error"
