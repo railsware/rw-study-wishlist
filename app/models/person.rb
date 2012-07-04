@@ -37,7 +37,6 @@ class Person < ActiveRecord::Base
 
   def self.find_for_vkontakte_oauth access_token, friends_hashes, current_user_hash 
     if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => true).first
-       #person.update_attribute(:avatar,open(current_user_hash[:photo_medium_rec]))
        person
     else
 	  if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => false).first

@@ -5,7 +5,6 @@ class UpdateUser
     person = Person.find(person_id) 
     @app = VkontakteApi::Client.new(token)
     current_user_hash = @app.users.get(uids: vk_id, fields: 'bdate,photo_medium_rec').first
-    #current_user_hash = app_hash[:response].first
     person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]),
     						 :vk_avatar_url => current_user_hash[:photo_medium_rec],
     						 :birthday =>
