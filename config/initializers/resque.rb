@@ -6,6 +6,11 @@
 # You can also remove all the silencers if you're trying to debug a problem that might stem from framework code.
 # Rails.backtrace_cleaner.remove_silencers!
 
-uri = URI.parse("redis://localhost:6379/")  
-Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+
+rails_env = ENV['RAILS_ENV'] || 'development'
+
+resque_config = YAML.load_file(rails_root + '/config/resque.yml')
+Resque.redis = resque_config[rails_env]
 Dir["#{Rails.root}/app/jobs/*.rb"].each { |file| require file }
+#uri = URI.parse("redis://localhost:6379/")  
+#Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
