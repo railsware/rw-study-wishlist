@@ -43,7 +43,7 @@ class Person < ActiveRecord::Base
 	  if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => false).first
 	    person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]), :is_user => true)
 		#Person.create_friends friends_hashes, person
-		#Resque.enqueue(CreateFriends, person.id, token)
+		Resque.enqueue(CreateFriends, person.id, token)
 		person
 	  else
     		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday =>
@@ -59,7 +59,7 @@ class Person < ActiveRecord::Base
     								:vk_id => access_token.uid)
     	person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]),
     							 :vk_avatar_url => current_user_hash[:photo_medium_rec])
-    	#Resque.enqueue(CreateFriends, person.id, token)
+    	Resque.enqueue(CreateFriends, person.id, token)
 		#Person.create_friends friends_hashes, person
 		person
 	  end 
@@ -90,7 +90,7 @@ class Person < ActiveRecord::Base
     friends_in_db = person.friendships.collect {|f| f.friend}
     friends_in_db.each do |f|
       if !(friends_hashes.include? f)
-         Friendship.where(:person_id => person.id, :friend_id => f.id ).destroy
+         Friendship.destroy_all(:person_id => person.id, :friend_id => f.id )
       end
     end
     friends_hashes.each do |hash|
@@ -109,6 +109,9 @@ class Person < ActiveRecord::Base
 	     						 :vk_id => hash[:uid], :vk_avatar_url => hash[:photo_medium_rec])
 	     Friendship.create!(:person_id => person.id, :friend_id => friend.id )
 	  else
+	  	 if person.friendships.where(:person_id => person.id, :friend_id => friend.id).first == nil
+	  	 	Friendship.create!(:person_id => person.id, :friend_id => friend.id )
+	  	 end
 		 friend.update_attributes(:name =>hash[:first_name] + " " + hash[:last_name], :birthday => 
 	     						 if hash[:bdate] == nil
 	     						   nil 
