@@ -22,13 +22,13 @@ Wishlist::Application.configure do
 
 
   ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    :user_name => "wishlist-staging",
-    :password => "dc2e697ad1984213",
-    :address => "mailtrap.io",
-    :port => 2525,
-    :authentication => :plain,
-  }
+ActionMailer::Base.smtp_settings = {
+  :user_name => "wishlist",
+  :password => "d446905c144a46ea",
+  :address => "mailtrap.io",
+  :port => 2525,
+  :authentication => :plain,
+}
 
 
   # Defaults to Rails.root.join("public/assets")
