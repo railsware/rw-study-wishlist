@@ -35,7 +35,8 @@
               <%= link_to image_tag("exit.png", :border => 0), {:controller => "landing", :action => "logout"},:class=>"exit" %>
               <%else%>
                   <% if Rails.env == "development" %>
-                      <%= link_to 'Login', 'local_login'%>
+                      <%= link_to 'Localhost_Login', 'local_login'%>
+                      <%= link_to 'Localtunnel_Login', 'auth/vkontakte', :class => "popup", :"data-width" => 600, :"data-height" => 400%>
                   <% else %>
                       <%= link_to 'Login', 'auth/vkontakte', :class => "popup", :"data-width" => 600, :"data-height" => 400%>
                   <% end %>
