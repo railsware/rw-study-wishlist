@@ -2,7 +2,6 @@ class UpdateUser
  @queue = :simple
 
  def self.perform(person_id, vk_id, token)
- 	puts "UpdateUser: started"
     person = Person.find(person_id) 
     @app = VkontakteApi::Client.new(token)
     current_user_hash = @app.users.get(uids: vk_id, fields: 'bdate,photo_medium_rec').first
@@ -18,7 +17,6 @@ class UpdateUser
 	     						     	DateTime.strptime(current_user_hash[:bdate], '%d.%m')
 	     						 	  end 
 	     						 	end)
-    puts "UpdateUser: finished"
-    puts "--------------------------------------------------------------"
+    puts "UpdateUser is done"
  end
 end
