@@ -21,6 +21,9 @@ gem 'vk_api'
 gem 'russian'
 gem 'resque', :require => "resque/server"
 gem 'resque-scheduler'
+gem 'redis'
+gem 'redis-namespace'
+gem 'yajl-ruby'
 gem 'exception_notification'
 gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git'
 

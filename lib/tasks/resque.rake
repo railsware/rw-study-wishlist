@@ -55,7 +55,7 @@ namespace :resque do
   
   # Start a worker with proper env vars and output redirection
   def run_worker(queue, count = 1)
-    puts "Starting #{count} worker(s) with QUEUE: #{queue} ENV = #{ENV['RAILS_ENV']}"
+    puts "Starting #{count} worker(s) with QUEUE: #{queue}"
 
     ##  make sure log/resque_err, log/resque_stdout are writable.
     ops = {:pgroup => true, :err => [(Rails.root + "log/resque_err").to_s, "a"], 
