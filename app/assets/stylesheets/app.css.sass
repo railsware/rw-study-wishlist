@@ -138,7 +138,42 @@ nav
   float: left
   margin-right: 10px
 
+/*Slider*/
+.slider
+  height: 424px
 
+.slides_container
+  width: 970px
+  height: 424px
+  padding-top: 10px
+
+.slides_container div
+  width: 970px
+  height: 424px
+  display: block
+
+.pagination
+  float: right
+  list-style: none
+
+.pagination li
+  float: left
+  margin: 0 1px
+
+.pagination li a
+  display: block
+  width: 13px
+  height: 0
+  padding-top: 13px
+  background-image: url(asset_path("pagination.png", image))
+  float: left
+  overflow: hidden
+
+.pagination li.current a, .pagination li.current a:hover
+  background-position: 0 -13px
+
+.pagination li a:hover
+  background-position: 0 -26px
 
 
 
