@@ -23,7 +23,7 @@ class FriendsController < ApplicationController
     friends = current_user.friends
     @friends_1_week = friends.collect { |v| if v.birthday != nil then if (v.birthday.month == d_now.month)&&(v.birthday.day - d_now.day <= 7)&&(v.birthday.day - d_now.day >= 0) then v end end }
     @friends_1_week.delete(nil)
-    @friends = @friends.sort_by { |hsh| [hsh[:is_user] ? 0:1]}  
+    @friends_1_week = @friends_1_week.sort_by { |hsh| [hsh[:is_user] ? 0:1]}  
   end
   
   def bdate_in_2_weeks
