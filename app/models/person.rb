@@ -42,8 +42,8 @@ class Person < ActiveRecord::Base
     else
 	  if person = Person.where(:vk_id => current_user_hash[:uid], :is_user => false).first
 	    person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]), :is_user => true)
-		#Person.create_friends friends_hashes, person
-		Resque.enqueue(CreateFriends, person.id, token)
+		Person.create_friends friends_hashes, person
+		#Resque.enqueue(CreateFriends, person.id, token)
 		person
 	  else
     		person = Person.create!(:is_user => true, :name => access_token.info.name, :birthday =>
@@ -59,8 +59,8 @@ class Person < ActiveRecord::Base
     								:vk_id => access_token.uid)
     	person.update_attributes(:avatar => open(current_user_hash[:photo_medium_rec]),
     							 :vk_avatar_url => current_user_hash[:photo_medium_rec])
-    	Resque.enqueue(CreateFriends, person.id, token)
-		#Person.create_friends friends_hashes, person
+    	#Resque.enqueue(CreateFriends, person.id, token)
+		Person.create_friends friends_hashes, person
 		person
 	  end 
     end
